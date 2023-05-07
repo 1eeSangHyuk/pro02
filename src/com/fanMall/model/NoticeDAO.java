@@ -72,4 +72,52 @@ public class NoticeDAO {
 		}
 		Oracle11.close(conn, pstmt);
 	}
+	
+	public int noticeInsert(Notice noti){
+		int i = 0;
+		try {
+			conn = Oracle11.getConnection();
+			pstmt = conn.prepareStatement(Oracle11.NOTICE_INSERT);
+			pstmt.setString(1, noti.getUser_id());
+			pstmt.setString(2, noti.getNotice_title());
+			pstmt.setString(3, noti.getNotice_text());
+			pstmt.setString(4, "data/"+noti.getNotice_file());
+			i = pstmt.executeUpdate();
+		} catch (ClassNotFoundException | SQLException e) {
+			e.printStackTrace();
+		}
+		Oracle11.close(conn, pstmt);
+		return i;
+	}
+	
+	public int noticeUpdate(Notice noti){
+		int i = 0;
+		try {
+			conn = Oracle11.getConnection();
+			pstmt = conn.prepareStatement(Oracle11.NOTICE_UPDATE);
+			pstmt.setString(1, noti.getNotice_title());
+			pstmt.setString(2, noti.getNotice_text());
+			pstmt.setString(3, noti.getNotice_file());
+			pstmt.setInt(4, noti.getNotice_no());
+			i = pstmt.executeUpdate();
+		} catch (ClassNotFoundException | SQLException e) {
+			e.printStackTrace();
+		}
+		Oracle11.close(conn, pstmt);
+		return i;
+	}
+	
+	public int noticeDelete(int notice_no){
+		int i = 0;
+		try {
+			conn = Oracle11.getConnection();
+			pstmt = conn.prepareStatement(Oracle11.NOTICE_DELETE);
+			pstmt.setInt(1, notice_no);
+			i = pstmt.executeUpdate();
+		} catch (ClassNotFoundException | SQLException e) {
+			e.printStackTrace();
+		}
+		Oracle11.close(conn, pstmt);
+		return i;
+	}
 }

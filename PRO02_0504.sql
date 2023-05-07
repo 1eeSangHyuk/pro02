@@ -116,3 +116,4 @@ INSERT INTO NOTICE(notice_no, user_id, notice_date, notice_title, notice_text, r
 
 select * from notice;
 commit;
+

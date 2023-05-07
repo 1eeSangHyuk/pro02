@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ page import="java.util.*, java.lang.*, java.text.*, java.net.InetAddress" %>
 <c:set var="path" value="${pageContext.request.contextPath }" />
 <!DOCTYPE html>
@@ -16,34 +17,52 @@
 <body>
 <%@ include file="../../header.jsp" %>
 <div>
-	<div>
-		<h2>공지사항 - ${list.notice_title }</h2>
-		<table class="table">
-			<thead>
-				<tr>
-					<th>작성자</th>
-					<th>제목</th>
-					<th>내용</th>
-					<th>작성일</th>
-					<th>조회수</th>
-				</tr>	
-			</thead>
-			<tbody>
-				<tr>
-					<td>${noti.user_id }</td>
-					<td>${noti.notice_title }</td>
-					<td>${noti.notice_text }</td>
-					<td>${noti.notice_date }</td>
-					<td>${noti.readcnt }</td>
-				</tr>
-			</tbody>
-		</table>
-		<div class="btn-group">
-			<a href="${path }/NoticeList.do">공지사항 목록으로</a>
-			<a href="${path }/InsertList.do?user_id=${noti.user_id }">글 쓰기</a>
-			<a href="${path }/UpdateList.do?notice_no=${noti.notice_no }">글 수정하기</a>
-			<a href="${path }/DeleteList.do?notice_no=${noti.notice_no }">글 삭제하기</a>
-		</div>
+	<h2>공지사항 - ${noti.notice_title }</h2>
+	<p>${msg }</p>
+	<table class="table">
+		<tbody>
+			<tr>
+				<th>제목</th>
+				<td>${noti.notice_title }</td>
+			</tr>
+			<tr>
+				<th>작성자</th>
+				<td>${noti.user_id }</td>
+			</tr>			
+			<tr>
+				<th>작성일</th>
+				<td>${noti.notice_date }</td>
+			</tr>
+			<tr>
+				<th>내용</th>
+				<td>${noti.notice_text }</td>
+			</tr>
+			<c:if test="${!empty noti.notice_file }">
+			<tr>
+				<th>첨부파일</th>
+				<td>
+					<c:set var="lh" value="${fn:length(noti.notice_file) }" />
+					<c:set var="download" value="${fn:substring(noti.notice_file,5,lh) }" />
+					<a href="${path }/${filepath }/${notice_file }"download>${download }</a>
+				</td>
+			</tr>
+			</c:if>	
+			<tr>
+				<th>조회수</th>
+				<td>${noti.readcnt }</td>
+			</tr>	
+		</tbody>
+	</table>
+	<div class="btn-group">
+		<a href="${path }/InsertNotice.do" class="btn btn-primary">글 쓰기</a>&nbsp;&nbsp;&nbsp;&nbsp;
+		<%-- <c:if test="${uid.equals("admin") || uid.equals(noti.user_id) }"> --%>
+			<a href="${path }/UpdateNotice.do?notice_no=${noti.notice_no }" class="btn btn-primary">글 수정하기</a>&nbsp;&nbsp;&nbsp;&nbsp;
+			<a href="${path }/DeleteNotice.do?notice_no=${noti.notice_no }" class="btn btn-primary">글 삭제하기</a>&nbsp;&nbsp;&nbsp;&nbsp;
+		<%-- </c:if> --%>
+	</div>
+	<br>
+	<div class="btn-group">
+		<a href="${path }/NoticeList.do" class="btn btn-primary">공지사항 목록으로</a>
 	</div>
 </div>
 <%@ include file="../../footer.jsp" %>

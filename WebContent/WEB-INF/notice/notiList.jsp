@@ -16,35 +16,36 @@
 <body>
 <%@ include file="../../header.jsp" %>
 <div>
-	<div>
-		<h2>공지사항</h2>
-		<table class="table">
-			<thead>
-				<tr>
-					<th>연번</th>
-					<th>작성자</th>
-					<th>제목</th>
-					<th>작성일</th>
-					<th>조회수</th>
-				</tr>	
-			</thead>
-			<tbody>
-			<c:forEach var="list" items="${notiList }" varStatus="status">
-				<tr>
-					<td>${status.count }</td>
-					<td>${list.user_id }</td>
-					<td><a href="${path }/NoticeListDetail.do?notice_no=${list.notice_no }">${list.notice_title }</a></td>
-					<td>${list.notice_date }</td>
-					<td>${list.readcnt }</td>
-				</tr>
-			</c:forEach>
-				<c:if test="${empty notiList }">
-				<tr>
-					<td colspan="4">해당 공지사항이 존재하지 않습니다.</td>
-				</tr>
-				</c:if>	
-			</tbody>
-		</table>
+	<h2>공지사항</h2>
+	<table class="table">
+		<thead>
+			<tr>
+				<th>연번</th>
+				<th>제목</th>
+				<th>작성자</th>
+				<th>작성일</th>
+				<th>조회수</th>
+			</tr>	
+		</thead>
+		<tbody>
+		<c:forEach var="list" items="${notiList }" varStatus="status">
+			<tr>
+				<td>${status.count }</td>
+				<td><a href="${path }/NoticeListDetail.do?notice_no=${list.notice_no }">${list.notice_title }</a></td>
+				<td>${list.user_id }</td>
+				<td>${list.notice_date }</td>
+				<td>${list.readcnt }</td>
+			</tr>
+		</c:forEach>
+			<c:if test="${empty notiList }">
+			<tr>
+				<td colspan="4">해당 공지사항이 존재하지 않습니다.</td>
+			</tr>
+			</c:if>	
+		</tbody>
+	</table>
+	<div class="btn-group">
+		<a href="${path }/InsertNotice.do" class="btn btn-primary">글 쓰기</a>&nbsp;&nbsp;&nbsp;&nbsp;
 	</div>
 </div>
 <%@ include file="../../footer.jsp" %>
