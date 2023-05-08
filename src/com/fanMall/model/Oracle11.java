@@ -20,6 +20,9 @@ public class Oracle11 {
 	final static String NOTICE_UPDATE = "UPDATE NOTICE SET NOTICE_TITLE=?, NOTICE_TEXT=?, NOTICE_FILE=?, NOTICE_DATE=SYSDATE WHERE NOTICE_NO=?";
 	final static String NOTICE_DELETE = "DELETE FROM NOTICE WHERE NOTICE_NO=?";
 	
+	final static String USER_LOGIN = "select * from user1 where USER_ID=?";
+	
+	
 	static Connection getConnection() throws ClassNotFoundException, SQLException{
 		Class.forName(driver);
 		Connection conn = DriverManager.getConnection(url, user, pw);

@@ -13,12 +13,16 @@
 		<nav id="tnb">
 			<ul class="right_item">
 				<c:if test="${empty uid }">
-					<li><a href="">로그인</a></li>
-					<li><a href="">회원가입</a></li>
+					<li><a href="${header_path }/UserLogin.do">로그인</a></li>
+					<li><a href="${header_path }/UserTerms.do">회원가입</a></li>
 				</c:if>
 				<c:if test="${!empty uid }">
 					<li><a href="">회원정보</a></li>
 					<li><a href="">장바구니</a></li>
+					<li><a href="${header_path }/UserLogout.do">로그아웃</a></li>
+				</c:if>
+				<c:if test="${uid.equals('admin') }">
+					<li><a href="">관리자 페이지</a></li>
 					<li><a href="">로그아웃</a></li>
 				</c:if>
 			</ul>
