@@ -26,14 +26,9 @@ public class UserLoginProCtrl extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
-		
-		String id = request.getParameter("id");
-		String pw = request.getParameter("pw");
-		String msg = "";
+		String id = request.getParameter("id"), pw = request.getParameter("pw");
 		int cnt = 0;
-		
 		UserDAO udao = new UserDAO();
-
 		try {
 			cnt = udao.loginTest(id, pw);
 		} catch (InvalidKeyException | NoSuchAlgorithmException
@@ -48,10 +43,8 @@ public class UserLoginProCtrl extends HttpServlet {
 			session.setAttribute("uid", id);
 			response.sendRedirect(request.getContextPath());
 		} else if (cnt==0){
-			msg = "비밀번호를 다시 확인해 주세요";
 			response.sendRedirect("UserLogin.do");
 		} else {
-			msg = "아이디를 다시 확인해 주세요";
 			response.sendRedirect("UserLogin.do");
 		}
 	}

@@ -22,8 +22,6 @@ public class DeleteNoticeCtrl extends HttpServlet {
 		
 		int i = ndao.noticeDelete(notice_no);
 		if (i == 0){
-			String msg = "업데이트가 이뤄지지 않았습니다.";
-			request.setAttribute("msg", msg);
 			response.sendRedirect("NoticeListDetail.do?notice_no="+notice_no);
 		} else {
 			response.sendRedirect("NoticeList.do");

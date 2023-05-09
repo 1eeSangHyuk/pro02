@@ -68,7 +68,6 @@ public class UserDAO {
 				i = 0;
 			}
 		} catch (ClassNotFoundException | SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally{
 			Oracle11.close(conn, pstmt, rs);

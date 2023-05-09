@@ -19,5 +19,4 @@ public class UserSignUpCtrl extends HttpServlet {
 		RequestDispatcher view = request.getRequestDispatcher("WEB-INF/user/signUp.jsp");
 		view.forward(request, response);
 	}
-
 }

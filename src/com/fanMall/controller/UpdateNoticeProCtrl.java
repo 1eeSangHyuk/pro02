@@ -22,12 +22,12 @@ public class UpdateNoticeProCtrl extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
-		
-		String savePath = "/data";	//업로드할 디렉토리
-		int uploadFileSizeLimit = 10 * 1024 * 1024;	//업로드할 파일 크기 제한
-		String encType = "UTF-8";		//멀티파트 데이터의 인코딩 설정
-		ServletContext context = getServletContext();	//현재 서블릿(프로젝트)의 위치 저장
-		String uploadFilePath = context.getRealPath(savePath);  //서버 상에 실제 업로드되는 디렉토리 지정
+	
+		String savePath = "/data";
+		int uploadFileSizeLimit = 10 * 1024 * 1024;
+		String encType = "UTF-8";
+		ServletContext context = getServletContext();
+		String uploadFilePath = context.getRealPath(savePath);
 		
 		int notice_no = 0;
 		String user_id = "";
@@ -44,7 +44,6 @@ public class UpdateNoticeProCtrl extends HttpServlet {
 			notice_title = multi.getParameter("title");
 			notice_text = multi.getParameter("textInput");
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -58,9 +57,6 @@ public class UpdateNoticeProCtrl extends HttpServlet {
 		int i = ndao.noticeUpdate(noti);
 
 		if (i == 0){
-			String msg = "업데이트가 이뤄지지 않았습니다.";
-			request.setAttribute("msg", msg);
-			
 			response.sendRedirect("UpdateNotice.do?notice_no="+notice_no);
 		} else {
 			response.sendRedirect("NoticeList.do");

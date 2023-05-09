@@ -16,7 +16,6 @@ public class NoticeDAO {
 	
 	public ArrayList<Notice> noticeListAll(){
 		ArrayList<Notice> notiList = new ArrayList<Notice>();
-		//notice tbl에서 모든 레코드 검색 -> 반환된 rs를 notiList에 add
 		try {
 			conn = Oracle11.getConnection();
 			pstmt = conn.prepareStatement(Oracle11.NOTICE_SELECT_ALL);
@@ -30,11 +29,8 @@ public class NoticeDAO {
 				noti.setReadcnt(rs.getInt("readcnt"));
 				notiList.add(noti);
 			}
-		} catch (ClassNotFoundException | SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		Oracle11.close(conn, pstmt, rs);
+		} catch (ClassNotFoundException | SQLException e) {e.printStackTrace();
+		} finally {Oracle11.close(conn, pstmt, rs);}
 		return notiList;
 	}
 	
@@ -54,10 +50,8 @@ public class NoticeDAO {
 				noti.setNotice_file(rs.getString("notice_file"));
 				noti.setReadcnt(rs.getInt("readcnt"));
 			}
-		} catch (ClassNotFoundException | SQLException e) {
-			e.printStackTrace();
-		}
-		Oracle11.close(conn, pstmt, rs);
+		} catch (ClassNotFoundException | SQLException e) {e.printStackTrace();
+		} finally {Oracle11.close(conn, pstmt, rs);}
 		return noti;
 	}
 	
@@ -67,10 +61,8 @@ public class NoticeDAO {
 			pstmt = conn.prepareStatement(Oracle11.NOTICE_READCOUNT_UPDATE);
 			pstmt.setInt(1, notice_no);
 			pstmt.executeUpdate();
-		} catch (ClassNotFoundException | SQLException e) {
-			e.printStackTrace();
-		}
-		Oracle11.close(conn, pstmt);
+		} catch (ClassNotFoundException | SQLException e) {e.printStackTrace();
+		} finally {Oracle11.close(conn, pstmt);}
 	}
 	
 	public int noticeInsert(Notice noti){
@@ -83,10 +75,8 @@ public class NoticeDAO {
 			pstmt.setString(3, noti.getNotice_text());
 			pstmt.setString(4, noti.getNotice_file());
 			i = pstmt.executeUpdate();
-		} catch (ClassNotFoundException | SQLException e) {
-			e.printStackTrace();
-		}
-		Oracle11.close(conn, pstmt);
+		} catch (ClassNotFoundException | SQLException e) {e.printStackTrace();
+		} finally {Oracle11.close(conn, pstmt);}
 		return i;
 	}
 	
@@ -100,10 +90,8 @@ public class NoticeDAO {
 			pstmt.setString(3, noti.getNotice_file());
 			pstmt.setInt(4, noti.getNotice_no());
 			i = pstmt.executeUpdate();
-		} catch (ClassNotFoundException | SQLException e) {
-			e.printStackTrace();
-		}
-		Oracle11.close(conn, pstmt);
+		} catch (ClassNotFoundException | SQLException e) {e.printStackTrace();
+		} finally {Oracle11.close(conn, pstmt);}
 		return i;
 	}
 	
@@ -114,10 +102,8 @@ public class NoticeDAO {
 			pstmt = conn.prepareStatement(Oracle11.NOTICE_DELETE);
 			pstmt.setInt(1, notice_no);
 			i = pstmt.executeUpdate();
-		} catch (ClassNotFoundException | SQLException e) {
-			e.printStackTrace();
-		}
-		Oracle11.close(conn, pstmt);
+		} catch (ClassNotFoundException | SQLException e) {e.printStackTrace();
+		} finally {Oracle11.close(conn, pstmt);}
 		return i;
 	}
 }

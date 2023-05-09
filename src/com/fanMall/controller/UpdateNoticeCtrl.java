@@ -28,10 +28,8 @@ public class UpdateNoticeCtrl extends HttpServlet {
 		
 		noti = ndao.noticeList(notice_no);
 		
-		String file1 = "";
-		String filepath = "";
+		String file1 = "", filepath = "";
 		
-		//한글 파일 이름 인코딩 처리
 		if(noti.getNotice_file() != null){
 			file1 = noti.getNotice_file().substring(5); 
 			filepath = noti.getNotice_file().substring(0,4);

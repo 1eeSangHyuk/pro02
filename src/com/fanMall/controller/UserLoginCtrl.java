@@ -17,5 +17,4 @@ public class UserLoginCtrl extends HttpServlet {
 		RequestDispatcher view = request.getRequestDispatcher("WEB-INF/user/login.jsp");
 		view.forward(request, response);
 	}
-
 }

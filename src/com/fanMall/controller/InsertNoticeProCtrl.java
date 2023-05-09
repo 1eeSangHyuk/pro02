@@ -24,11 +24,11 @@ public class InsertNoticeProCtrl extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
 		
-		String savePath = "/data";	//업로드할 디렉토리
-		int uploadFileSizeLimit = 10 * 1024 * 1024;	//업로드할 파일 크기 제한
-		String encType = "UTF-8";		//멀티파트 데이터의 인코딩 설정
-		ServletContext context = getServletContext();	//현재 서블릿(프로젝트)의 위치 저장
-		String uploadFilePath = context.getRealPath(savePath);  //서버 상에 실제 업로드되는 디렉토리 지정
+		String savePath = "/data";
+		int uploadFileSizeLimit = 10 * 1024 * 1024;
+		String encType = "UTF-8";
+		ServletContext context = getServletContext();
+		String uploadFilePath = context.getRealPath(savePath);
 		
 		String user_id = "";
 		String notice_title = "";
@@ -42,9 +42,7 @@ public class InsertNoticeProCtrl extends HttpServlet {
 			MultipartRequest multi = new MultipartRequest(request, uploadFilePath,
 					uploadFileSizeLimit, encType, new DefaultFileRenamePolicy());
 			fileName = multi.getFilesystemName("file1");
-			if (fileName == null) { // 파일이 업로드 되지 않았을때
-				System.out.print("파일 업로드 실패~!");
-			} else {
+			if (fileName != null) {
 				noti.setNotice_file("data/"+fileName);
 			}
 			user_id = multi.getParameter("id");
@@ -53,7 +51,6 @@ public class InsertNoticeProCtrl extends HttpServlet {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
 		noti.setUser_id(user_id);
 		noti.setNotice_title(notice_title);
 		noti.setNotice_text(notice_text);

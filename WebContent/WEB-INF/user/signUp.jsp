@@ -90,7 +90,6 @@
 					dataType:"json",
 					data:params,
 					success:function(result){
-						//console.log(result);
 						var idChk = result.result;
 						if(idChk==false){
 							$("#idCk").val("no");

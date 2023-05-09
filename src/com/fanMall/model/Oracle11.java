@@ -17,7 +17,8 @@ public class Oracle11 {
 	final static String NOTICE_SELECT_ONE = "SELECT * FROM NOTICE WHERE NOTICE_NO=?";
 	final static String NOTICE_READCOUNT_UPDATE = "UPDATE NOTICE SET READCNT = READCNT+1 WHERE NOTICE_NO=?";
 	final static String NOTICE_INSERT = "INSERT INTO NOTICE VALUES(notice_no_seq.nextval, ?, DEFAULT, ?, ?, ?, DEFAULT)";
-	final static String NOTICE_UPDATE = "UPDATE NOTICE SET NOTICE_TITLE=?, NOTICE_TEXT=?, NOTICE_FILE=?, NOTICE_DATE=SYSDATE WHERE NOTICE_NO=?";
+	final static String NOTICE_UPDATE = "UPDATE NOTICE SET NOTICE_TITLE=?, NOTICE_TEXT=?, NOTICE_FILE=?,"
+			+ " NOTICE_DATE=TO_CHAR(SYSDATE, 'yyyy/MM/dd hh24:mi:ss') WHERE NOTICE_NO=?";
 	final static String NOTICE_DELETE = "DELETE FROM NOTICE WHERE NOTICE_NO=?";
 	
 	final static String USER_LOGIN = "select * from user1 where USER_ID=?";
@@ -34,7 +35,6 @@ public class Oracle11 {
 			try {
 				rs.close();
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
@@ -42,7 +42,6 @@ public class Oracle11 {
 			try {
 				pstmt.close();
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
@@ -50,7 +49,6 @@ public class Oracle11 {
 			try {
 				conn.close();
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
@@ -61,7 +59,6 @@ public class Oracle11 {
 			try {
 				pstmt.close();
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
@@ -69,7 +66,6 @@ public class Oracle11 {
 			try {
 				conn.close();
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}

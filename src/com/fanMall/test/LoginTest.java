@@ -17,14 +17,12 @@ public class LoginTest {
 
 	public static void main(String[] args) {
 		String a = "";
-		// TODO Auto-generated method stub
 		try {
 			a = AES256.encryptAES256("1111", "%03x");
 		} catch (InvalidKeyException | NoSuchAlgorithmException
 				| InvalidKeySpecException | NoSuchPaddingException
 				| InvalidParameterSpecException | UnsupportedEncodingException
 				| BadPaddingException | IllegalBlockSizeException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		System.out.println(a);
@@ -36,7 +34,6 @@ public class LoginTest {
 				| NoSuchAlgorithmException | InvalidKeySpecException
 				| InvalidAlgorithmParameterException | BadPaddingException
 				| IllegalBlockSizeException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		System.out.println(b);

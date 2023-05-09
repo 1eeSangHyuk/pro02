@@ -24,20 +24,18 @@
 		<table class="table">
 			<tbody>
 				<tr>
-					<th>
-						<label for="title">제목</label>
-					</th>
+					<th><label for="title">제목</label></th>
 					<td>
 						<input type="hidden" id="no" name="no" value="${noti.notice_no }">
-						<input type="text" id="title" name="title" maxlength="95" title="${noti.notice_title }" placeholder="${noti.notice_title }">
+						<input type="text" id="title" name="title" maxlength="95" title="${noti.notice_title }"
+						 placeholder="${noti.notice_title }">
 					</td>
 				</tr>
 				<tr>
-					<th>
-						<label for="textInput">내용</label>
-					</th>
+					<th><label for="textInput">내용</label></th>
 					<td>
-						<textarea rows="20" cols="50" id="textInput" name="textInput" title="${noti.notice_text }" placeholder="${noti.notice_text }" maxlength="990"></textarea>
+						<textarea rows="20" cols="50" id="textInput" name="textInput" title="${noti.notice_text }"
+						 placeholder="${noti.notice_text }" maxlength="990"></textarea>
 					</td>
 				</tr>
 				<tr>

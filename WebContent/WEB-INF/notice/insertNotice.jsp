@@ -23,20 +23,18 @@
 		<table class="table">
 			<tbody>
 				<tr>
-					<th>
-						<label for="title">제목</label>
-					</th>
+					<th><label for="title">제목</label></th>
 					<td>
 						<input type="hidden" id="id" name="id" value="${uid }">
-						<input type="text" id="title" name="title" maxlength="95" title="100자 이내로 작성해 주십시오." placeholder="100자 이내로 작성해 주십시오.">
+						<input type="text" id="title" name="title" maxlength="95" title="100자 이내로 작성해 주십시오."
+						 placeholder="100자 이내로 작성해 주십시오.">
 					</td>
 				</tr>
 				<tr>
-					<th>
-						<label for="textInput">내용</label>
-					</th>
+					<th><label for="textInput">내용</label></th>
 					<td>
-						<textarea rows="20" cols="50" id="textInput" name="textInput" title="1000자 이내로 작성해 주십시오." placeholder="1000자 이내로 작성해 주십시오." maxlength="990"></textarea>
+						<textarea rows="20" cols="50" id="textInput" name="textInput" title="1000자 이내로 작성해 주십시오."
+						 placeholder="1000자 이내로 작성해 주십시오." maxlength="990"></textarea>
 					</td>
 				</tr>
 				<tr>

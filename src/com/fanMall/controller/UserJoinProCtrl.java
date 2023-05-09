@@ -29,9 +29,7 @@ public class UserJoinProCtrl extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
-		String pw = request.getParameter("pw1");
-		String key = "%03x";
-		String msg = "";
+		String pw = request.getParameter("pw1"), key = "%03x";
 		
 		try {
 			pw = AES256.encryptAES256(pw, key);
@@ -39,7 +37,6 @@ public class UserJoinProCtrl extends HttpServlet {
 				| InvalidKeySpecException | NoSuchPaddingException
 				| InvalidParameterSpecException | UnsupportedEncodingException
 				| BadPaddingException | IllegalBlockSizeException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 		
@@ -56,8 +53,7 @@ public class UserJoinProCtrl extends HttpServlet {
 		if (i >= 1){
 			response.sendRedirect("UserLogin.do");
 		} else {
-			msg = "회원가입 중 오류발생";
-			response.sendRedirect("UserSignUp.do?msg="+msg);
+			response.sendRedirect("UserSignUp.do");
 		}
 	}
 }
