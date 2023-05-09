@@ -31,7 +31,7 @@
 				</tr>
 				<tr>
 					<th><label for="">비밀번호 : </label></th>
-					<td><input type="text" id="pw" name="pw"></td>
+					<td><input type="password" id="pw" name="pw"></td>
 				</tr>
 				<tr>
 					<td colspan="2">

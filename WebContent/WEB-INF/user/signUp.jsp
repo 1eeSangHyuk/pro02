@@ -22,7 +22,7 @@
 		<table class="table">
 			<tbody>
 				<tr>
-					<th><label for="">아이디 : </label></th>
+					<th>아이디 : </th>
 					<td>
 						<div>
 							<input type="text" id="id" name="id">
@@ -40,28 +40,28 @@
 					</td>
 				</tr>
 				<tr>
-					<th><label for="">비밀번호 : </label></th>
+					<th>비밀번호 : </th>
 					<td><input type="password" id="pw1" name="pw1"></td>
 				</tr>
 				<tr>
-					<th><label for="">비밀번호 확인 : </label></th>
+					<th>비밀번호 확인 : </th>
 					<td><input type="password" id="pw2" name="pw2"></td>
 				</tr>
 				<tr>
-					<th><label for="">이름 : </label></th>
+					<th>이름 : </th>
 					<td><input type="text" id="name1" name="name1"></td>
 				</tr>
 				<tr>
-					<th><label for="">전화번호 : </label></th>
+					<th>전화번호 : </th>
 					<td><input type="text" id="phone" name="phone"></td>
 				</tr>
 				<tr>
-					<th><label for="">주소 : </label></th>
+					<th>주소 : </th>
 					<td>
 						<input type="text" id="address1" name="address1" placeholder="기본주소">
 						<input type="text" id="address2" name="address2" placeholder="상세주소">
 						<input type="text" id="postcode" name="postcode" placeholder="우편번호">
-						<button id="post_btn" onclick="findAddr()" class="btn btn-primary">우편번호 검색</button>
+						<button type="button" onclick="findAddr()" class="btn btn-primary">우편번호 검색</button>
 					</td>
 				</tr>
 				<tr>
@@ -79,13 +79,13 @@
 		<script>
 			function idCheck(){
 				if($("#id").val()==""){
-					alert("아이디를 입력해 주세요.");
+					alert("아이디를 입력하시기 바랍니다.");
 					$("#id").focus();
-					return 0;
+					return;
 				}
 				var params = { id:$("#id").val() }
 				$.ajax({
-					url:"${path1 }/IdCheck.do",
+					url:"${path }/IdCheck.do",
 					type:"post",
 					dataType:"json",
 					data:params,
@@ -93,10 +93,10 @@
 						//console.log(result);
 						var idChk = result.result;
 						if(idChk==false){
-							$("#idck").val("no");
+							$("#idCk").val("no");
 							$("#msg").html("<strong>사용할 수 없는 아이디 입니다.</strong>")
 						} else if(idChk==true){
-							$("#idck").val("yes");
+							$("#idCk").val("yes");
 							$("#id").attr("readonly","true");
 							$("#msg").html("<strong>사용 가능한 아이디 입니다.</strong>");
 							$("#pw").focus();
@@ -112,7 +112,7 @@
 					f.pw1.focus();
 					return false;
 				}
-				if(idCk.value != "yes"){
+				if(f.idCk.value != "yes"){
 					alert("아이디 중복 확인이 되지 않았습니다.");
 					f.id.focus();
 					return false;

@@ -1,6 +1,7 @@
 package com.fanMall.controller;
 
 import java.io.IOException;
+import java.net.URLEncoder;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -27,6 +28,19 @@ public class UpdateNoticeCtrl extends HttpServlet {
 		
 		noti = ndao.noticeList(notice_no);
 		
+		String file1 = "";
+		String filepath = "";
+		
+		//한글 파일 이름 인코딩 처리
+		if(noti.getNotice_file() != null){
+			file1 = noti.getNotice_file().substring(5); 
+			filepath = noti.getNotice_file().substring(0,4);
+			file1 = URLEncoder.encode(file1, "UTF-8");	
+			
+			request.setAttribute("file1", file1);
+			request.setAttribute("filepath", filepath);
+		}
+
 		request.setAttribute("noti", noti);
 		
 		RequestDispatcher view = request.getRequestDispatcher("WEB-INF/notice/updateNotice.jsp");

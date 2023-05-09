@@ -35,25 +35,29 @@ public class InsertNoticeProCtrl extends HttpServlet {
 		String notice_text = "";
 		String fileName = "";
 		
+		NoticeDAO ndao = new NoticeDAO();
+		Notice noti = new Notice();
+		
 		try {
 			MultipartRequest multi = new MultipartRequest(request, uploadFilePath,
 					uploadFileSizeLimit, encType, new DefaultFileRenamePolicy());
 			fileName = multi.getFilesystemName("file1");
+			if (fileName == null) { // 파일이 업로드 되지 않았을때
+				System.out.print("파일 업로드 실패~!");
+			} else {
+				noti.setNotice_file("data/"+fileName);
+			}
 			user_id = multi.getParameter("id");
 			notice_title = multi.getParameter("title");
 			notice_text = multi.getParameter("textInput");
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		NoticeDAO ndao = new NoticeDAO();
-		Notice noti = new Notice();
-		/*noti.setUser_id(user_id);*/
-		noti.setUser_id("admin");
+
+		noti.setUser_id(user_id);
 		noti.setNotice_title(notice_title);
 		noti.setNotice_text(notice_text);
-		noti.setNotice_file(fileName);
+		
 		int i = ndao.noticeInsert(noti);
 		if (i == 0){
 			String msg = "공지사항을 등록하지 못했습니다.";

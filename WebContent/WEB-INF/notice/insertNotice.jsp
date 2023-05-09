@@ -42,7 +42,7 @@
 				<tr>
 					<th><label for="file1">첨부 파일</label></th>
 					<td>
-						<input type="file" name="file1" id="file1" class="">
+						<input type="file" name="file1" id="file1">
 					</td>
 				</tr>
 				<tr>

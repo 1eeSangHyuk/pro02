@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ page import="java.util.*, java.lang.*, java.text.*, java.net.InetAddress" %>
 <c:set var="path" value="${pageContext.request.contextPath }" />
 
@@ -42,7 +43,15 @@
 				<tr>
 					<th><label for="file1">첨부 파일</label></th>
 					<td>
-						<input type="file" name="file1" id="file1" class="">
+						<span>
+							<c:set var="len" value="${noti.notice_file }" />
+							<c:set var="download" value="${fn:substring(noti.notice_file,5,lh) }" />
+							${download }
+						</span><br>
+						<input type="radio" name="selFile1" id="selFile1" onclick="fileCall()" checked>파일 교체 안함<br>
+						<input type="radio" name="selFile2" id="selFile2" onclick="fileCall()">파일 교체<br>
+						<input type="file" name="file1" id="file1">
+						<input type="hidden" name="file1" id="file2" value="${download }">
 					</td>
 				</tr>
 				<tr>
@@ -54,6 +63,23 @@
 			</tbody>
 		</table>
 	</form>
+	<script>
+		function fileCall(){
+			var selFile1 = document.getElementById("selFile1");
+			var selFile2 = document.getElementById("selFile2");
+			var file1 = document.getElementById("file1");
+			var file2 = document.getElementById("file2");
+			if (selFile1.checked){
+				file1.style.display = "none";
+				file1.setAttribute("disabled");
+				file2.removeAttribute("disabled");
+			} else {
+				file1.style.display = "block";
+				file2.setAttribute("disabled");
+				file1.removeAttribute("disabled");
+			}
+		}
+	</script>
 </div>
 <%@ include file="../../footer.jsp" %>
 </body>

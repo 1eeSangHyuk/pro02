@@ -19,7 +19,7 @@ public class LoginTest {
 		String a = "";
 		// TODO Auto-generated method stub
 		try {
-			a = AES256.encryptAES256("1234", "%03x");
+			a = AES256.encryptAES256("1111", "%03x");
 		} catch (InvalidKeyException | NoSuchAlgorithmException
 				| InvalidKeySpecException | NoSuchPaddingException
 				| InvalidParameterSpecException | UnsupportedEncodingException

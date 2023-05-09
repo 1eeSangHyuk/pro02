@@ -8,22 +8,23 @@
 		uid = (String) session.getAttribute("uid");
 	}
 %>
-<header id="hd">
-	<div class="hd_wrap">
-		<nav id="tnb">
-			<ul class="right_item">
+<header id="hd" class="container">
+	<div class="container-fluid">
+		<nav id="tnb" class="navbar navbar-default">
+			<ul class="nav navbar-nav navbar-right">
 				<c:if test="${empty uid }">
 					<li><a href="${header_path }/UserLogin.do">로그인</a></li>
 					<li><a href="${header_path }/UserTerms.do">회원가입</a></li>
 				</c:if>
-				<c:if test="${!empty uid }">
+				<c:if test="${!empty uid && !uid.equals('admin') }">
+					<li><a>${uid }님, 안녕하세요!</a></li>
 					<li><a href="">회원정보</a></li>
 					<li><a href="">장바구니</a></li>
 					<li><a href="${header_path }/UserLogout.do">로그아웃</a></li>
 				</c:if>
 				<c:if test="${uid.equals('admin') }">
 					<li><a href="">관리자 페이지</a></li>
-					<li><a href="">로그아웃</a></li>
+					<li><a href="${header_path }/UserLogout.do">로그아웃</a></li>
 				</c:if>
 			</ul>
 		</nav>

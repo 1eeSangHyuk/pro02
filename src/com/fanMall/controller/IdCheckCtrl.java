@@ -23,7 +23,7 @@ public class IdCheckCtrl extends HttpServlet {
 		UserDAO udao = new UserDAO();
 		int i = udao.idCheck(id);
 		boolean res = false;
-		if (i>=1){
+		if (i==1){
 			res = false;
 		} else {
 			res = true;

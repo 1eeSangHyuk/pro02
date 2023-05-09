@@ -81,7 +81,7 @@ public class NoticeDAO {
 			pstmt.setString(1, noti.getUser_id());
 			pstmt.setString(2, noti.getNotice_title());
 			pstmt.setString(3, noti.getNotice_text());
-			pstmt.setString(4, "data/"+noti.getNotice_file());
+			pstmt.setString(4, noti.getNotice_file());
 			i = pstmt.executeUpdate();
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();

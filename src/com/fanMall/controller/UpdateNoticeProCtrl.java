@@ -2,7 +2,6 @@ package com.fanMall.controller;
 
 import java.io.IOException;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -31,6 +30,7 @@ public class UpdateNoticeProCtrl extends HttpServlet {
 		String uploadFilePath = context.getRealPath(savePath);  //서버 상에 실제 업로드되는 디렉토리 지정
 		
 		int notice_no = 0;
+		String user_id = "";
 		String notice_title = "";
 		String notice_text = "";
 		String fileName = "";
@@ -39,6 +39,7 @@ public class UpdateNoticeProCtrl extends HttpServlet {
 			MultipartRequest multi = new MultipartRequest(request, uploadFilePath,
 					uploadFileSizeLimit, encType, new DefaultFileRenamePolicy());
 			notice_no = Integer.parseInt(multi.getParameter("no"));
+			user_id = multi.getParameter("user_id");
 			fileName = multi.getFilesystemName("file1");
 			notice_title = multi.getParameter("title");
 			notice_text = multi.getParameter("textInput");
@@ -49,7 +50,7 @@ public class UpdateNoticeProCtrl extends HttpServlet {
 		
 		NoticeDAO ndao = new NoticeDAO();
 		Notice noti = new Notice();
-		/*noti.setUser_id(user_id);*/
+		noti.setUser_id(user_id);
 		noti.setNotice_no(notice_no);
 		noti.setNotice_title(notice_title);
 		noti.setNotice_text(notice_text);
@@ -62,7 +63,7 @@ public class UpdateNoticeProCtrl extends HttpServlet {
 			
 			response.sendRedirect("UpdateNotice.do?notice_no="+notice_no);
 		} else {
-			response.sendRedirect("NoticeListDetail.do");
+			response.sendRedirect("NoticeList.do");
 		}
 	}
 

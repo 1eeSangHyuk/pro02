@@ -43,7 +43,7 @@
 				<td>
 					<c:set var="lh" value="${fn:length(noti.notice_file) }" />
 					<c:set var="download" value="${fn:substring(noti.notice_file,5,lh) }" />
-					<a href="${path }/${filepath }/${notice_file }"download>${download }</a>
+					<a href="${path }/${filepath1 }/${notice_file }">${download }</a>
 				</td>
 			</tr>
 			</c:if>	
@@ -55,10 +55,10 @@
 	</table>
 	<div class="btn-group">
 		<a href="${path }/InsertNotice.do" class="btn btn-primary">글 쓰기</a>&nbsp;&nbsp;&nbsp;&nbsp;
-		<%-- <c:if test="${uid.equals("admin") || uid.equals(noti.user_id) }"> --%>
+		<c:if test="${uid.equals(noti.user_id) || uid.equals('admin') }">
 			<a href="${path }/UpdateNotice.do?notice_no=${noti.notice_no }" class="btn btn-primary">글 수정하기</a>&nbsp;&nbsp;&nbsp;&nbsp;
 			<a href="${path }/DeleteNotice.do?notice_no=${noti.notice_no }" class="btn btn-primary">글 삭제하기</a>&nbsp;&nbsp;&nbsp;&nbsp;
-		<%-- </c:if> --%>
+		</c:if>
 	</div>
 	<br>
 	<div class="btn-group">

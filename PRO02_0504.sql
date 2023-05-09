@@ -114,6 +114,5 @@ INSERT INTO NOTICE(notice_no, user_id, notice_date, notice_title, notice_text, r
 INSERT INTO NOTICE(notice_no, user_id, notice_date, notice_title, notice_text, readcnt) VALUES(NOTICE_NO_SEQ.NEXTVAL, 'admin', default, '더미공지사항2', '더미공지사항2입니다.', default);
 -- 더미데이터입력란 끝
 
-select * from notice;
 commit;
 

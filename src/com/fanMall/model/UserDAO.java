@@ -15,7 +15,9 @@ import javax.crypto.BadPaddingException;
 import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
 
+
 import com.crypto.util.AES256;
+import com.fanMall.dto.User;
 
 public class UserDAO {
 	private Connection conn = null;
@@ -61,13 +63,40 @@ public class UserDAO {
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()){
-				i = 0;
-			} else {
 				i = 1;
+			} else {
+				i = 0;
 			}
 		} catch (ClassNotFoundException | SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} finally{
+			Oracle11.close(conn, pstmt, rs);
+		}
+		return i;
+	}
+	
+	public int insertUser(User user){
+		int i = 0, j = 0;
+		try {
+			conn = Oracle11.getConnection();
+			pstmt = conn.prepareStatement(Oracle11.USER_INSERT);
+			pstmt.setString(1, user.getUser_id());
+			pstmt.setString(2, user.getUser_pw());		
+			pstmt.setString(3, user.getUser_name());
+			pstmt.setString(4, user.getUser_phone());
+			pstmt.setString(5, user.getUser_addr());
+			pstmt.setString(6, user.getUser_email());
+			j = pstmt.executeUpdate();
+			if(j >= 1){
+				i = 1;
+			} else {
+				i = 0;
+			}
+		} catch (ClassNotFoundException | SQLException e) {
+			e.printStackTrace();
+		} finally{
+			Oracle11.close(conn, pstmt, rs);
 		}
 		return i;
 	}

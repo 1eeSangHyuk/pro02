@@ -16,13 +16,13 @@ public class Oracle11 {
 	final static String NOTICE_SELECT_ALL = "select * from notice ORDER BY NOTICE_NO DESC";
 	final static String NOTICE_SELECT_ONE = "SELECT * FROM NOTICE WHERE NOTICE_NO=?";
 	final static String NOTICE_READCOUNT_UPDATE = "UPDATE NOTICE SET READCNT = READCNT+1 WHERE NOTICE_NO=?";
-	final static String NOTICE_INSERT = "INSERT INTO NOTICE VALUES(notice_no_seq.nextval, ?, DEFAULT, ?, ?, ?, DEFAULT)";	// str id, str title, str text, str file
+	final static String NOTICE_INSERT = "INSERT INTO NOTICE VALUES(notice_no_seq.nextval, ?, DEFAULT, ?, ?, ?, DEFAULT)";
 	final static String NOTICE_UPDATE = "UPDATE NOTICE SET NOTICE_TITLE=?, NOTICE_TEXT=?, NOTICE_FILE=?, NOTICE_DATE=SYSDATE WHERE NOTICE_NO=?";
 	final static String NOTICE_DELETE = "DELETE FROM NOTICE WHERE NOTICE_NO=?";
 	
 	final static String USER_LOGIN = "select * from user1 where USER_ID=?";
-	
-	
+	final static String USER_INSERT = "insert into user1 values(?, ?, ?, ?, ?, ?, DEFAULT, DEFAULT)";
+										
 	static Connection getConnection() throws ClassNotFoundException, SQLException{
 		Class.forName(driver);
 		Connection conn = DriverManager.getConnection(url, user, pw);
