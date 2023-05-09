@@ -6,25 +6,25 @@
 
 ##개념적 설계
 - 유스케이스
-![공지사항목록 프로세스](./img/useCaseDiagram.PNG "공지사항목록 프로세스")
+![유스케이스](./img/useCaseDiagram.PNG "유스케이스")
 
 ##논리적 설계
 - 정보공학적 ERD
-![공지사항목록 프로세스](./img/nERD.PNG "공지사항목록 프로세스")
+![정보공학적 ERD](./img/nERD.PNG "정보공학적 ERD")
 
 ##물리적 설계
 - db ERD
-![공지사항목록 프로세스](./img/pro02_DTO.PNG "공지사항목록 프로세스")
+![db ERD](./img/pro02_DTO.PNG "db ERD")
 
 ##클래스 설계
 - 클래스 다이어그램
-![공지사항목록 프로세스](./img/pro02_ERD.PNG "공지사항목록 프로세스")
+![클래스 다이어그램](./img/pro02_ERD.PNG "클래스 다이어그램")
 
 ##시퀸스 설계
 - 시퀸스 설명
-![공지사항목록 프로세스](./img/sequence/seq1.PNG "공지사항목록 프로세스")
-![공지사항목록 프로세스](./img/sequence/seq2.PNG "공지사항목록 프로세스")
-![공지사항목록 프로세스](./img/sequence/seq3.PNG "공지사항목록 프로세스")
+![공지사항목록 프로세스1](./img/sequence/seq1.PNG "공지사항목록 프로세스")
+![공지사항목록 프로세스2](./img/sequence/seq2.PNG "공지사항목록 프로세스")
+![공지사항목록 프로세스3](./img/sequence/seq3.PNG "공지사항목록 프로세스")
 
 #프로젝트 구성
 
