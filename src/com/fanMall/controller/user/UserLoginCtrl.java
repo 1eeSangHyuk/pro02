@@ -1,7 +1,6 @@
-package com.fanMall.view;
+package com.fanMall.controller.user;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,21 +9,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.fanMall.dto.Notice;
-import com.fanMall.model.NoticeDAO;
-
-
-@WebServlet("/NoticeList.do")
-public class GetNoticeList extends HttpServlet {
+@WebServlet("/UserLogin.do")
+public class UserLoginCtrl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		NoticeDAO ndao = new NoticeDAO();
-		ArrayList<Notice> notiList = new ArrayList<Notice>();
-		notiList = ndao.noticeListAll();
-		request.setAttribute("notiList", notiList);
-		
-		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/notice/notiList.jsp");
+		RequestDispatcher view = request.getRequestDispatcher("WEB-INF/user/login.jsp");
 		view.forward(request, response);
 	}
 }

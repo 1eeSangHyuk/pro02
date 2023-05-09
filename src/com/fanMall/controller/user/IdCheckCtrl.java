@@ -1,4 +1,4 @@
-package com.fanMall.controller;
+package com.fanMall.controller.user;
 
 import java.io.IOException;
 import java.io.PrintWriter;

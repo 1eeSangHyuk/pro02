@@ -1,4 +1,4 @@
-package com.fanMall.view;
+package com.fanMall.controller.notice;
 
 import java.io.IOException;
 import java.net.URLEncoder;

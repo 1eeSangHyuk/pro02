@@ -1,4 +1,4 @@
-package com.fanMall.controller;
+package com.fanMall.controller.notice;
 
 import java.io.IOException;
 
@@ -9,17 +9,22 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.fanMall.model.NoticeDAO;
 
-@WebServlet("/InsertNotice.do")
-public class InsertNoticeCtrl extends HttpServlet {
+
+@WebServlet("/DeleteNotice.do")
+public class DeleteNoticeCtrl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String msg = "공지사항을 등록합니다.";
-		request.setAttribute("msg", msg);
+		NoticeDAO ndao = new NoticeDAO();
+		int notice_no = Integer.parseInt(request.getParameter("notice_no"));
 		
-		RequestDispatcher view = request.getRequestDispatcher("WEB-INF/notice/insertNotice.jsp");
-		view.forward(request, response);
+		int i = ndao.noticeDelete(notice_no);
+		if (i == 0){
+			response.sendRedirect("NoticeListDetail.do?notice_no="+notice_no);
+		} else {
+			response.sendRedirect("NoticeList.do");
+		}
 	}
-
 }
