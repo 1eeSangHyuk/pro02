@@ -1,85 +1,54 @@
 package com.fanMall.model;
 
-import java.io.UnsupportedEncodingException;
-import java.security.InvalidAlgorithmParameterException;
-import java.security.InvalidKeyException;
-import java.security.NoSuchAlgorithmException;
-import java.security.spec.InvalidKeySpecException;
-import java.security.spec.InvalidParameterSpecException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
-import javax.crypto.BadPaddingException;
-import javax.crypto.IllegalBlockSizeException;
-import javax.crypto.NoSuchPaddingException;
-
-
-import com.crypto.util.AES256;
-import com.fanMall.dto.User;
+import com.fanMall.dto.Product;
 
 public class ProductDAO {
 	private Connection conn = null;
 	private PreparedStatement pstmt = null;
 	private ResultSet rs = null;
 	
-	public int loginTest(String id, String pw) throws InvalidKeyException, NoSuchAlgorithmException, InvalidKeySpecException, NoSuchPaddingException, InvalidParameterSpecException, UnsupportedEncodingException, BadPaddingException, IllegalBlockSizeException, InvalidAlgorithmParameterException{
-		int i=0;
+	public ArrayList<Product> prodListAll(){
+		ArrayList<Product> prodList = new ArrayList<Product>();
 		try {
 			conn = Oracle11.getConnection();
-			pstmt = conn.prepareStatement(Oracle11.USER_LOGIN);
-			pstmt.setString(1, id);
+			pstmt = conn.prepareStatement(Oracle11.NOTICE_SELECT_ALL);
 			rs = pstmt.executeQuery();
-		} catch(Exception e) {
-			e.printStackTrace();
-		}
-		return i;
+			while(rs.next()){
+				Product prod = new Product();
+				prod.setP_code(rs.getString("p_code"));
+				prod.setP_name(rs.getString("p_name"));
+				prod.setP_price(rs.getInt("p_price"));
+				prod.setP_about(rs.getString("p_about"));
+				prod.setP_amount(rs.getInt("p_amount"));
+				prodList.add(prod);
+			}
+		} catch (ClassNotFoundException | SQLException e) {e.printStackTrace();
+		} finally {Oracle11.close(conn, pstmt, rs);}
+		return prodList;
 	}
 	
-	public int idCheck(String id){
-		int i=0;
+	public Product prodList(int p_code){
+		Product prod = new Product();
 		try {
 			conn = Oracle11.getConnection();
-			pstmt = conn.prepareStatement(Oracle11.USER_LOGIN);
-			pstmt.setString(1, id);
+			pstmt = conn.prepareStatement(Oracle11.NOTICE_SELECT_ONE);
+			pstmt.setInt(1, p_code);
 			rs = pstmt.executeQuery();
-			
 			if(rs.next()){
-				i = 1;
-			} else {
-				i = 0;
+				prod.setP_code(rs.getString("p_code"));
+				prod.setP_name(rs.getString("p_name"));
+				prod.setP_price(rs.getInt("p_price"));
+				prod.setP_about(rs.getString("p_about"));
+				prod.setP_amount(rs.getInt("p_amount"));
 			}
-		} catch (ClassNotFoundException | SQLException e) {
-			e.printStackTrace();
-		} finally{
-			Oracle11.close(conn, pstmt, rs);
-		}
-		return i;
-	}
-	
-	public int insertUser(User user){
-		int i = 0, j = 0;
-		try {
-			conn = Oracle11.getConnection();
-			pstmt = conn.prepareStatement(Oracle11.USER_INSERT);
-			pstmt.setString(1, user.getUser_id());
-			pstmt.setString(2, user.getUser_pw());		
-			pstmt.setString(3, user.getUser_name());
-			pstmt.setString(4, user.getUser_phone());
-			pstmt.setString(5, user.getUser_addr());
-			pstmt.setString(6, user.getUser_email());
-			j = pstmt.executeUpdate();
-			if(j >= 1){
-				i = 1;
-			} else {
-				i = 0;
-			}
-		} catch (ClassNotFoundException | SQLException e) {
-			e.printStackTrace();
-		} finally{
-			Oracle11.close(conn, pstmt, rs);
-		}
-		return i;
+		} catch (ClassNotFoundException | SQLException e) {e.printStackTrace();
+		} finally {Oracle11.close(conn, pstmt, rs);}
+		return prod;
 	}
 }

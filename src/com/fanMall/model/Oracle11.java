@@ -23,6 +23,9 @@ public class Oracle11 {
 	
 	final static String USER_LOGIN = "select * from user1 where USER_ID=?";
 	final static String USER_INSERT = "insert into user1 values(?, ?, ?, ?, ?, ?, DEFAULT, DEFAULT)";
+	
+	final static String PROD_SELECT_ALL = "SELECT * FROM PRODUCT ORDER BY P_CODE";
+	final static String PROD_SELECT_ONE = "SELECT * FROM PRODUCT WHERE P_CODE=?";
 										
 	static Connection getConnection() throws ClassNotFoundException, SQLException{
 		Class.forName(driver);
