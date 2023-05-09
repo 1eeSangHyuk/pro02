@@ -6,19 +6,19 @@
 
 ##개념적 설계
 - 유스케이스
-![유스케이스](./img/useCaseDiagram.PNG "유스케이스")
+![유스케이스](./img/useCaseDiagram.png "유스케이스")
 
 ##논리적 설계
 - 정보공학적 ERD
-![정보공학적 ERD](./img/nERD.PNG "정보공학적 ERD")
+![정보공학적 ERD](./img/nERD.png "정보공학적 ERD")
 
 ##물리적 설계
 - db ERD
-![db ERD](./img/pro02_DTO.PNG "db ERD")
+![db ERD](./img/pro02_DTO.png "db ERD")
 
 ##클래스 설계
 - 클래스 다이어그램
-![클래스 다이어그램](./img/pro02_ERD.PNG "클래스 다이어그램")
+![클래스 다이어그램](./img/pro02_ERD.png "클래스 다이어그램")
 
 ##시퀸스 설계
 - 시퀸스 설명
