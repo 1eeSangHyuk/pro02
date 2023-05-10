@@ -44,5 +44,4 @@ public class GetNoticeListDetail extends HttpServlet {
 		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/notice/notiListDetail.jsp");
 		view.forward(request, response);
 	}
-
 }

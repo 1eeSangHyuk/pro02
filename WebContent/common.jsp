@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<c:set var="common_path" value="${realPath }" />
+<c:set var="common_path" value="${pageContext.request.contextPath }" />
 
 
 <meta charset="UTF-8">
@@ -18,7 +18,7 @@
 <meta name="author" content="LSH">
 
 <!-- 파비콘 설정 -->
-<link rel="shortcut icon" href="${common_path }/img/favicon_pulsar.ico">
+<link rel="shortcut icon" href="${common_path }/data/img/favicon.ico">
 
 <!-- 오픈그래프 설정 -->
 <meta name="og:site_name" content="Pulsar">
@@ -49,4 +49,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 
 <!-- jquery -->
-<script src="http://code.jquery.com/jquery-latest.js"></script> 
+<script
+  src="https://code.jquery.com/jquery-3.6.4.js"
+  integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E="
+  crossorigin="anonymous"></script> 

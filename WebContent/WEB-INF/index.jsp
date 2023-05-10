@@ -8,7 +8,7 @@
 <head>
 <meta charset="UTF-8">
 <%@ include file="../common.jsp" %>
-<title>Insert title here</title>
+<title>루메나</title>
 <style>
 </style>
 </head>

@@ -1,7 +1,7 @@
 package com.fanMall.controller.product;
 
 import java.io.IOException;
-import java.util.ArrayList;
+import java.util.HashMap;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -18,14 +18,19 @@ public class GetProductList extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("utf-8");
+		response.setContentType("text/html; charset=utf-8");
+		
+		String p_code = request.getParameter("p_code");
+		
 		ProductDAO pdao = new ProductDAO();
-		ArrayList<Product> prodList = new ArrayList<Product>();
+		Product prod = pdao.prodList(p_code);
+		HashMap<String, String> catMap = pdao.catMap(prod.getCatno());
 		
-		prodList = pdao.prodListAll();
-		request.setAttribute("prodList", prodList);
+		request.setAttribute("prod", prod);
+		request.setAttribute("catMap", catMap);
 		
-		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/notice/prodList.jsp");
+		RequestDispatcher view = request.getRequestDispatcher("/product/prodList.jsp");
 		view.forward(request, response);
 	}
-
 }
