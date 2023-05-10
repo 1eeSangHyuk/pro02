@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import com.fanMall.dto.Category;
 import com.fanMall.dto.Product;
 
 public class ProductDAO {
@@ -119,11 +120,9 @@ public class ProductDAO {
 			pstmt.setString(1, catno);
 			rs = pstmt.executeQuery();
 			if(rs.next()){
-//				Category cat = new Category();
-//				cat.setCatno(rs.getString("catno"));
-//				cat.setCatgroup(rs.getString("catgroup"));
-//				cat.setCatname(rs.getString("catname"));
 				catMap.put("catno", rs.getString("catno"));
+				catMap.put("cat1", rs.getString("catno").substring(0, 2));
+				catMap.put("cat2", rs.getString("catno").substring(2, 4));
 				catMap.put("catgroup", rs.getString("catgroup"));
 				catMap.put("catname", rs.getString("catname"));
 			}
@@ -131,6 +130,26 @@ public class ProductDAO {
 		} finally {Oracle11.close(conn, pstmt, rs);}
 		
 		return catMap;
+	}
+	
+	public ArrayList<Category> catListAll(){
+		ArrayList<Category> catList = new ArrayList<Category>();
+		try {
+			conn = Oracle11.getConnection();
+			pstmt = conn.prepareStatement(Oracle11.CAT_SELECT_ALL);
+			rs = pstmt.executeQuery();
+			while(rs.next()){
+				Category cat = new Category();
+				cat.setCatno(rs.getString("catno"));
+				cat.setCat1(rs.getString("catno").substring(0, 2));
+				cat.setCat2(rs.getString("catno").substring(2, 4));
+				cat.setCatgroup(rs.getString("catgroup"));
+				cat.setCatname(rs.getString("catname"));
+				catList.add(cat);
+			}
+		} catch (ClassNotFoundException | SQLException e) {e.printStackTrace();
+		} finally {Oracle11.close(conn, pstmt, rs);}
+		return catList;
 	}
 	
 	public int deleteProduct(String p_code){
@@ -155,6 +174,27 @@ public class ProductDAO {
 	
 	public int insertProduct(Product prod){
 		int i = 0;
+		try {
+			conn = Oracle11.getConnection();
+			pstmt = conn.prepareStatement(Oracle11.PROD_INSERT);
+			pstmt.setString(1, prod.getP_code());
+			pstmt.setString(2, prod.getP_name());
+			pstmt.setInt(3, prod.getP_price());
+			pstmt.setString(4, prod.getP_about());
+			pstmt.setInt(5, prod.getP_amount());
+			pstmt.setString(6, prod.getCatno());
+			pstmt.setString(7, prod.getPic1());
+			pstmt.setString(8, prod.getPic2());
+			pstmt.setString(9, prod.getPic3());
+			int j = pstmt.executeUpdate();
+			if (j > 0){
+				i = 1;
+			} else {
+				i = 0;
+			}
+		} catch (ClassNotFoundException | SQLException e) {
+			e.printStackTrace();
+		}
 		return i;
 	}
 }

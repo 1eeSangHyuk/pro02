@@ -9,15 +9,15 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<%@ include file="../common.jsp" %>
-<title>공지사항</title>
+<%@ include file="../../common.jsp" %>
+<title>제품 등록</title>
 <style>
 </style>
 </head>
 <body>
-<%@ include file="../header.jsp" %>
+<%@ include file="../../header.jsp" %>
 <div>
-	<h2>공지사항 작성하기</h2>
+	<h2>제품 등록하기</h2>
 	<p>${msg }</p>
 	<form action="${path }/InsertProductPro.do" method="post" enctype="multipart/form-data">
 		<table class="table">
@@ -25,8 +25,7 @@
 				<tr>
 					<th><label for="p_code">제품 코드</label></th>
 					<td>
-						<input type="text" id="p_code" name="p_code" maxlength="5" title="숫자로만 5자리 이내로 작성해 주십시오."
-						 placeholder="숫자로만 5자리 이내로 작성해 주십시오." required="required" autofocus="autofocus">
+						
 					</td>
 				</tr>
 				<tr>
@@ -90,6 +89,6 @@
 		</table>
 	</form>
 </div>
-<%@ include file="../footer.jsp" %>
+<%@ include file="../../footer.jsp" %>
 </body>
 </html>

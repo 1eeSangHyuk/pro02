@@ -30,6 +30,8 @@ public class Oracle11 {
 	final static String PROD_SELECT_CAT_ALL = "SELECT * FROM PRODUCT WHERE CATNO LIKE ?||'%'";
 	final static String CAT_SELECT = "SELECT * FROM CATEGORY WHERE CATNO=?";
 	final static String PROD_DELETE = "DELETE FROM PRODUCT WHERE P_CODE=?";
+	final static String PROD_INSERT = "INSERT INTO PRODUCT VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)";
+	final static String CAT_SELECT_ALL = "SELECT * FROM CATEGORY";
 	
 	static Connection getConnection() throws ClassNotFoundException, SQLException{
 		Class.forName(driver);

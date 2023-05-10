@@ -18,11 +18,11 @@ import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 public class InsertProductProCtrl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
-		
-		String savePath = "/data";
+
+		String savePath = "product/img/prod_img/fan";
 		int uploadFileSizeLimit = 10 * 1024 * 1024;
 		String encType = "UTF-8";
 		ServletContext context = getServletContext();
@@ -39,11 +39,11 @@ public class InsertProductProCtrl extends HttpServlet {
 		pic2 = multi.getFilesystemName("pic2");
 		pic3 = multi.getFilesystemName("pic3");
 		if (pic1 != null){
-			prod.setPic1("data/"+pic1);
+			prod.setPic1(savePath+"/"+pic1);
 		} else if(pic2 != null){
-			prod.setPic2("data/"+pic2);
+			prod.setPic2(savePath+"/"+pic2);
 		} else if(pic3 != null){
-			prod.setPic3("data/"+pic3);
+			prod.setPic3(savePath+"/"+pic3);
 		}
 		prod.setP_code(multi.getFilesystemName("p_code"));
 		prod.setP_name(multi.getFilesystemName("p_name"));
@@ -52,6 +52,12 @@ public class InsertProductProCtrl extends HttpServlet {
 		prod.setP_amount(Integer.parseInt(multi.getFilesystemName("p_amount")));
 		prod.setCatno(multi.getFilesystemName("catno"));
 		
+		int i = pdao.insertProduct(prod);
 		
+		if (i==1){
+			response.sendRedirect("ProductListAll.do");
+		} else {
+			response.sendRedirect(request.getContextPath());
+		}
 	}
 }
