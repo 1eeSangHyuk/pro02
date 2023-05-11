@@ -22,6 +22,15 @@ select p_code
 ;
 
 select * from basket;
+
+select user_id, sum(basket_count)
+  from basket
+group by user_id;
+
+select basket_no, user_id, p_code, basket_count, sum(basket_count) over(partition by user_id) as tot_count
+  from basket
+order by basket_no desc;
+
 desc basket;
 select user_id from user1;
 --admin user1 test1 (varchar)
@@ -29,6 +38,8 @@ select p_code from product;
 --347 288 358 346 356 (varchar)
 
 alter table basket modify basket_no number;
+
+--truncate table basket;
 
 insert into basket values(basket_no_seq.nextval, 'user1', '347', 3);
 insert into basket values(basket_no_seq.nextval, 'user1', '288', 5);

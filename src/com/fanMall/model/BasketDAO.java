@@ -39,11 +39,12 @@ public class BasketDAO {
 		return basketList;
 	}
 	
-	public ArrayList<BasketVO> getUserBasket(){	//사용자 장바구니 조회
-		ArrayList<BasketVO> basketList = new ArrayList<BasketVO>();
+	public ArrayList<BasketVO> getUserBasket(String user_id){	//사용자 장바구니 조회
+		ArrayList<BasketVO> basketVOList = new ArrayList<BasketVO>();
 		try {
 			conn = Oracle11.getConnection();
 			pstmt = conn.prepareStatement(Oracle11.BASKET_SELECT_BY_USER_ID);
+			pstmt.setString(1, user_id);
 			rs = pstmt.executeQuery();
 			while(rs.next()){
 				BasketVO bvo = new BasketVO();
@@ -54,13 +55,13 @@ public class BasketDAO {
 				bvo.setBasket_count(rs.getInt("basket_count"));
 				bvo.setP_price(rs.getInt("p_price"));
 				bvo.setP_amount(rs.getInt("p_amount"));
-				basketList.add(bvo);
+				basketVOList.add(bvo);
 			}
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
 		} finally {
 			Oracle11.close(conn, pstmt, rs);
 		}
-		return basketList;
+		return basketVOList;
 	}
 }

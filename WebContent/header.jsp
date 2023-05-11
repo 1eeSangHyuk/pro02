@@ -82,7 +82,7 @@
 		          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">마이페이지 <span class="caret"></span></a>
 		          <ul class="dropdown-menu" role="menu">
 		            <li><a href="#">회원정보</a></li>
-		            <li><a href="#">장바구니</a></li>
+		            <li><a href="GetUserBasket.do?uid=${uid }">장바구니</a></li>
 		            <li><a href="#">주문내역</a></li>
 		            <li class="divider"></li>
 		            <li><a href="#">고객센터(qna)</a></li>
