@@ -4,6 +4,10 @@
 <c:set var="header_path" value="${pageContext.request.contextPath }" />
 <%@ include file="../common.jsp" %>
 <%
+	request.setCharacterEncoding("UTF-8");
+	response.setContentType("text/html; charset=UTF-8");
+%>
+<%
 	String uid = "";
 	if(session != null){
 		uid = (String) session.getAttribute("uid");
@@ -93,9 +97,9 @@
 			        <ul class="dropdown-menu" role="menu">
 						<li><a href="UpdateProduct.do">전체 물품 재고관리 view</a></li>
 						<li><a href="ReceiptProduct.do">전체 물품에 대한 주문 관리view</a></li>
-						<li><a href="ProductListAll.do">물품 삭제 -- 전체 물품 리스트로 포워딩</a></li>
+						<li><a href="ProductListAll.do">물품 삭제 O -- 전체 물품 리스트로 포워딩</a></li>
 						<li><a href="ReviewProduct.do">전체 물품에 대한 리뷰 관리</a></li>
-						<li><a href="InsertProduct.do">물품 등록</a></li>
+						<li><a href="InsertProduct.do">물품 등록 O</a></li>
 					</ul>
 				</li>
 				<li><a href="${header_path }/UserLogout.do">로그아웃</a></li>

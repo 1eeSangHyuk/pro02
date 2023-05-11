@@ -19,8 +19,17 @@ public class InsertProductCtrl extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ProductDAO pdao = new ProductDAO();
-		ArrayList<Category> catList = pdao.catListAll();
-		request.setAttribute("catList", catList);
+		ArrayList<Category> catListCat1 = pdao.catListCat1();
+		request.setAttribute("catListCat1", catListCat1);
+//		int i = 0;
+		
+//		for (Category cat : catListCat1 ){
+//			i++;
+//			String cat1 = cat.getCat1();
+//			ArrayList<Category> catListCat2 = pdao.catListCat2(cat1);
+//			request.setAttribute("catListCat2_"+i, catListCat2);
+//		}
+		
 		
 		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/admin/insertProduct.jsp");
 		view.forward(request, response);

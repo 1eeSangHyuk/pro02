@@ -10,7 +10,7 @@ import java.util.HashMap;
 import com.fanMall.dto.Category;
 import com.fanMall.dto.Product;
 
-public class ProductDAO {
+public class ProductDAO {	
 	private Connection conn = null;
 	private PreparedStatement pstmt = null;
 	private ResultSet rs = null;
@@ -132,17 +132,35 @@ public class ProductDAO {
 		return catMap;
 	}
 	
-	public ArrayList<Category> catListAll(){
+	public ArrayList<Category> catListCat1(){
 		ArrayList<Category> catList = new ArrayList<Category>();
 		try {
 			conn = Oracle11.getConnection();
-			pstmt = conn.prepareStatement(Oracle11.CAT_SELECT_ALL);
+			pstmt = conn.prepareStatement(Oracle11.CAT_SELECT_CAT1);
+			rs = pstmt.executeQuery();
+			while(rs.next()){
+				Category cat = new Category();
+				cat.setCat1(rs.getString("cat1"));
+				cat.setCatgroup(rs.getString("catgroup"));
+				catList.add(cat);
+			}
+		} catch (ClassNotFoundException | SQLException e) {e.printStackTrace();
+		} finally {Oracle11.close(conn, pstmt, rs);}
+		return catList;
+	}
+	
+	public ArrayList<Category> catListCat2(String cat1){
+		ArrayList<Category> catList = new ArrayList<Category>();
+		try {
+			conn = Oracle11.getConnection();
+			pstmt = conn.prepareStatement(Oracle11.CAT_SELECT_CAT2);
+			pstmt.setString(1, cat1);
 			rs = pstmt.executeQuery();
 			while(rs.next()){
 				Category cat = new Category();
 				cat.setCatno(rs.getString("catno"));
-				cat.setCat1(rs.getString("catno").substring(0, 2));
-				cat.setCat2(rs.getString("catno").substring(2, 4));
+				cat.setCat1(rs.getString("cat1"));
+				cat.setCat2(rs.getString("cat2"));
 				cat.setCatgroup(rs.getString("catgroup"));
 				cat.setCatname(rs.getString("catname"));
 				catList.add(cat);
@@ -194,7 +212,27 @@ public class ProductDAO {
 			}
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
+		} finally {
+			Oracle11.close(conn, pstmt);
 		}
 		return i;
+	}
+	
+	public String getP_codeGenerator(String cat1){
+		String p_codeMax = "";
+		try {
+			conn = Oracle11.getConnection();
+			pstmt = conn.prepareStatement(Oracle11.GET_P_CODE_MAX_INCAT);
+			pstmt.setString(1, cat1);
+			rs = pstmt.executeQuery();
+			if(rs.next()){
+				p_codeMax = rs.getString("p_code");
+			}
+		} catch (ClassNotFoundException | SQLException e) {
+			e.printStackTrace();
+		} finally {
+			Oracle11.close(conn, pstmt, rs);
+		}
+		return p_codeMax;
 	}
 }

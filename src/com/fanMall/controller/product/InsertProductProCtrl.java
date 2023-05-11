@@ -22,7 +22,7 @@ public class InsertProductProCtrl extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
 
-		String savePath = "product/img/prod_img/fan";
+		String savePath = "/product/img/prod_img/fan";
 		int uploadFileSizeLimit = 10 * 1024 * 1024;
 		String encType = "UTF-8";
 		ServletContext context = getServletContext();
@@ -34,23 +34,25 @@ public class InsertProductProCtrl extends HttpServlet {
 		Product prod = new Product();
 		
 		MultipartRequest multi = new MultipartRequest(request, uploadFilePath,
-					uploadFileSizeLimit, encType, new DefaultFileRenamePolicy());
+				uploadFileSizeLimit, encType, new DefaultFileRenamePolicy());
 		pic1 = multi.getFilesystemName("pic1");
 		pic2 = multi.getFilesystemName("pic2");
 		pic3 = multi.getFilesystemName("pic3");
 		if (pic1 != null){
-			prod.setPic1(savePath+"/"+pic1);
-		} else if(pic2 != null){
-			prod.setPic2(savePath+"/"+pic2);
-		} else if(pic3 != null){
-			prod.setPic3(savePath+"/"+pic3);
+			prod.setPic1("."+savePath.substring(8, savePath.length())+"/"+pic1);
 		}
-		prod.setP_code(multi.getFilesystemName("p_code"));
-		prod.setP_name(multi.getFilesystemName("p_name"));
-		prod.setP_price(Integer.parseInt(multi.getFilesystemName("p_price")));
-		prod.setP_about(multi.getFilesystemName("p_about"));
-		prod.setP_amount(Integer.parseInt(multi.getFilesystemName("p_amount")));
-		prod.setCatno(multi.getFilesystemName("catno"));
+		if (pic2 != null){
+			prod.setPic2("."+savePath.substring(8, savePath.length())+"/"+pic2);
+		} 
+		if (pic3 != null){
+			prod.setPic3("."+savePath.substring(8, savePath.length())+"/"+pic3);
+		}
+		prod.setP_code(multi.getParameter("p_code"));
+		prod.setP_name(multi.getParameter("p_name"));
+		prod.setP_price(Integer.parseInt(multi.getParameter("p_price")));
+		prod.setP_about(multi.getParameter("p_about"));
+		prod.setP_amount(Integer.parseInt(multi.getParameter("p_amount")));
+		prod.setCatno(multi.getParameter("catno"));
 		
 		int i = pdao.insertProduct(prod);
 		

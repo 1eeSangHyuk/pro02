@@ -31,7 +31,16 @@ public class Oracle11 {
 	final static String CAT_SELECT = "SELECT * FROM CATEGORY WHERE CATNO=?";
 	final static String PROD_DELETE = "DELETE FROM PRODUCT WHERE P_CODE=?";
 	final static String PROD_INSERT = "INSERT INTO PRODUCT VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)";
-	final static String CAT_SELECT_ALL = "SELECT * FROM CATEGORY";
+	final static String CAT_SELECT_CAT1 = "SELECT SUBSTR(CATNO, 0, 2) AS CAT1, CATGROUP FROM CATEGORY WHERE CATNO LIKE '%01'";
+	final static String CAT_SELECT_CAT2 = "SELECT CATNO, SUBSTR(CATNO, 0, 2) AS CAT1, SUBSTR(CATNO, 3, 4) AS CAT2, CATGROUP, CATNAME FROM CATEGORY WHERE CATNO LIKE ?||'%'";
+	final static String GET_P_CODE_MAX_INCAT = "select p_code from (select * from product where catno like ? order by p_code desc) where rownum=1";
+	
+	final static String BASKET_SELECT_ALL = "SELECT * FROM BASKET"; //관리자 전체 장바구니 현황 조회
+	final static String BASKET_SELECT_BY_USER_ID = "select a.basket_no, a.user_id, a.p_code, b.p_name,"
+													+ " a.basket_count, b.p_price, b.p_amount from basket a, product b"
+													+ " where a.p_code = b.p_code and a.user_id = ?"; //사용자가 본인 장바구니 조회
+	final static String BASKET_SELECT_BY_P_CODE = "SELECT * FROM BASKET WHERE P_CODE=?"; //관리자 특정 항목에 대한 장바구니 현황 조회
+				
 	
 	static Connection getConnection() throws ClassNotFoundException, SQLException{
 		Class.forName(driver);
