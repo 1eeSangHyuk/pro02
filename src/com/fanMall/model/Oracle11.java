@@ -23,6 +23,7 @@ public class Oracle11 {
 	
 	final static String USER_LOGIN = "select * from user1 where USER_ID=?";
 	final static String USER_INSERT = "insert into user1 values(?, ?, ?, ?, ?, ?, DEFAULT, DEFAULT)";
+	final static String USER_GET = "select * from user1 where user_id=?";
 	
 	final static String PROD_SELECT_ALL = "SELECT * FROM PRODUCT ORDER BY CATNO";
 	final static String PROD_SELECT_ONE = "SELECT * FROM PRODUCT WHERE P_CODE=?";
@@ -36,11 +37,10 @@ public class Oracle11 {
 	final static String GET_P_CODE_MAX_INCAT = "select p_code from (select * from product where catno like ? order by p_code desc) where rownum=1";
 	
 	final static String BASKET_SELECT_ALL = "SELECT * FROM BASKET"; //관리자 전체 장바구니 현황 조회
-	final static String BASKET_SELECT_BY_USER_ID = "select a.basket_no, a.user_id, a.p_code, b.p_name,"
-													+ " a.basket_count, b.p_price, b.p_amount from basket a, product b"
-													+ " where a.p_code = b.p_code and a.user_id = ?"; //사용자가 본인 장바구니 조회
-	final static String BASKET_SELECT_BY_P_CODE = "SELECT * FROM BASKET WHERE P_CODE=?"; //관리자 특정 항목에 대한 장바구니 현황 조회
-				
+	final static String BASKET_SELECT_BY_BNO = "SELECT * FROM BASKET WHERE BASKET_NO=?"; //특정 항목에 대한 장바구니 현황 조회
+	final static String BASKETVO_SELECT_BY_USER_ID = "select a.basket_no, a.user_id, a.p_code, b.p_name,"
+			+ " a.basket_count, b.p_price, b.p_amount from basket a, product b"
+			+ " where a.p_code = b.p_code and a.user_id = ?"; //사용자가 본인 장바구니 조회
 	
 	static Connection getConnection() throws ClassNotFoundException, SQLException{
 		Class.forName(driver);

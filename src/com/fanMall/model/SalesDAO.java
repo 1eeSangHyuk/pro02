@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import com.fanMall.dto.Basket;
 import com.fanMall.vo.BasketVO;
 
-public class BasketDAO {
+public class SalesDAO {
 	private Connection conn = null;
 	private PreparedStatement pstmt = null;
 	private ResultSet rs = null;

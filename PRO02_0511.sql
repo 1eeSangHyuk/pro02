@@ -29,7 +29,7 @@ group by user_id;
 
 select basket_no, user_id, p_code, basket_count, sum(basket_count) over(partition by user_id) as tot_count
   from basket
-order by basket_no desc;
+order by user_id, basket_no desc;
 
 desc basket;
 select user_id from user1;

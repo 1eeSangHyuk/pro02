@@ -19,7 +19,7 @@ public class GetUserBasketCtrl extends HttpServlet {
 
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		BasketDAO bdao = new BasketDAO();
-		ArrayList<BasketVO> basketVOList = bdao.getUserBasket(request.getParameter("uid"));
+		ArrayList<BasketVO> basketVOList = bdao.getUserBasketVO(request.getParameter("uid"));
 		request.setAttribute("basketVOList", basketVOList);
 		
 		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/basket/userBasket.jsp");

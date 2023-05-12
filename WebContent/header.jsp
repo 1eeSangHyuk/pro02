@@ -100,6 +100,7 @@
 						<li><a href="ProductListAll.do">물품 삭제 O -- 전체 물품 리스트로 포워딩</a></li>
 						<li><a href="ReviewProduct.do">전체 물품에 대한 리뷰 관리</a></li>
 						<li><a href="InsertProduct.do">물품 등록 O</a></li>
+						<li class="divider"></li>
 					</ul>
 				</li>
 				<li><a href="${header_path }/UserLogout.do">로그아웃</a></li>
