@@ -1,4 +1,4 @@
-package com.fanMall.controller.sales;
+package com.fanMall.controller.order;
 
 import java.io.IOException;
 
@@ -16,8 +16,8 @@ import com.fanMall.model.BasketDAO;
 import com.fanMall.model.ProductDAO;
 import com.fanMall.model.UserDAO;
 
-@WebServlet("/AddSales.do")
-public class AddSalesCtrl extends HttpServlet {
+@WebServlet("/AddOrder.do")
+public class AddOrderCtrl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -28,21 +28,27 @@ public class AddSalesCtrl extends HttpServlet {
 		response.setContentType("text/html; charset=utf-8");
 		//※단일상품 결재
 
-		//결제창으로 넘길 
-		int basket_no = Integer.parseInt(request.getParameter("bno"));
-		Basket basket = bdao.getUserBasket(basket_no);
-		request.setAttribute("basket", basket);
+		//장바구니에서 넘어온 정보 처리
+		int basket_no = 0;
+		Basket basket = new Basket();
+		if(request.getParameter("bno") != null){
+			basket_no = Integer.parseInt(request.getParameter("bno"));
+			basket = bdao.getUserBasket(basket_no);
+			request.setAttribute("basket", basket);
+		}
 		
-		String user_id = basket.getUser_id();
-		User user = udao.getUserSales(user_id);
+		//사용자 정보 로딩
+		String user_id = request.getParameter("uid");
+		User user = udao.getUserById(user_id);
 		request.setAttribute("user", user);
 		
-		String p_code = basket.getP_code();
+		//제품 정보 로딩
+		String p_code = request.getParameter("p_code");
 		Product prod = pdao.prodList(p_code);
 		
 		request.setAttribute("prod", prod);
 		
-		RequestDispatcher view = request.getRequestDispatcher("/sales/addSales.jsp");
+		RequestDispatcher view = request.getRequestDispatcher("/order/addOrder.jsp");
 		view.forward(request, response);
 	}
 }

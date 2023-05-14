@@ -1,7 +1,6 @@
-package com.fanMall.controller.product;
+package com.fanMall.controller.user;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,19 +9,22 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.fanMall.dto.Category;
-import com.fanMall.model.ProductDAO;
+import com.fanMall.dto.User;
+import com.fanMall.model.UserDAO;
 
-@WebServlet("/InsertProduct.do")
-public class InsertProductCtrl extends HttpServlet {
+@WebServlet("/MyPage.do")
+public class MyPageCtrl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ProductDAO pdao = new ProductDAO();
-		ArrayList<Category> catListCat1 = pdao.catListCat1();
-		request.setAttribute("catListCat1", catListCat1);
+		String user_id = request.getParameter("uid");
+		UserDAO udao = new UserDAO();
+		User user = new User();
+		user = udao.getUserById(user_id);
+		request.setAttribute("user", user);
 		
-		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/admin/insertProduct.jsp");
+		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/user/myPage.jsp");
 		view.forward(request, response);
 	}
+
 }

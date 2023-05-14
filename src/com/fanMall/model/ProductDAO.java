@@ -233,6 +233,17 @@ public class ProductDAO {
 		} finally {
 			Oracle11.close(conn, pstmt, rs);
 		}
+		int p_code = Integer.parseInt(p_codeMax) + 1;
+		int i = p_codeMax.length();
+		if(p_codeMax == ""){
+			p_codeMax = "001";
+		} else {
+			if(i==2){
+				p_codeMax = "0" + p_code;
+			} else if(i==1) {
+				p_codeMax = "00" + p_code;
+			}
+		}
 		return p_codeMax;
 	}
 }

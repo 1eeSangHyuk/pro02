@@ -3,16 +3,15 @@ package com.fanMall.dto;
 public class Prod_order {
 	private	int	order_no;
 	private	String	user_id;
-	private String user_phone;
 	private	String	p_code;
 	private	int	order_count;
 	private	int	order_price;
 	private	String	order_date;
+	private String user_phone;
 	private	String	order_addr;
-	private	String	order_state;
-	private String dname;
-	private String dcode;
-	
+	private	String	deliver_company;
+	private	int	deliver_num;
+	private	String	deliver_state;
 	public int getOrder_no() {
 		return order_no;
 	}
@@ -49,35 +48,35 @@ public class Prod_order {
 	public void setOrder_date(String order_date) {
 		this.order_date = order_date;
 	}
-	public String getOrder_addr() {
-		return order_addr;
-	}
-	public void setOrder_addr(String order_addr) {
-		this.order_addr = order_addr;
-	}
-	public String getOrder_state() {
-		return order_state;
-	}
-	public void setOrder_state(String order_state) {
-		this.order_state = order_state;
-	}
 	public String getUser_phone() {
 		return user_phone;
 	}
 	public void setUser_phone(String user_phone) {
 		this.user_phone = user_phone;
 	}
-	public String getDname() {
-		return dname;
+	public String getOrder_addr() {
+		return order_addr;
 	}
-	public void setDname(String dname) {
-		this.dname = dname;
+	public void setOrder_addr(String order_addr) {
+		this.order_addr = order_addr;
 	}
-	public String getDcode() {
-		return dcode;
+	public String getDeliver_company() {
+		return deliver_company;
 	}
-	public void setDcode(String dcode) {
-		this.dcode = dcode;
+	public void setDeliver_company(String order_company) {
+		this.deliver_company = order_company;
 	}
-	
+	public int getDeliver_num() {
+		return deliver_num;
+	}
+	public void setDeliver_num(int order_num) {
+		this.deliver_num = order_num;
+	}
+	public String getDeliver_state() {
+		return deliver_state;
+	}
+	public void setDeliver_state(String order_state) {
+		this.deliver_state = order_state;
+	}
+
 }

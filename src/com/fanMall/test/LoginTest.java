@@ -18,7 +18,7 @@ public class LoginTest {
 	public static void main(String[] args) {
 		String a = "";
 		try {
-			a = AES256.encryptAES256("1111", "%03x");
+			a = AES256.encryptAES256("22222", "%03x");
 		} catch (InvalidKeyException | NoSuchAlgorithmException
 				| InvalidKeySpecException | NoSuchPaddingException
 				| InvalidParameterSpecException | UnsupportedEncodingException

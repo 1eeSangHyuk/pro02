@@ -40,7 +40,7 @@
 				<td><fmt:formatNumber type="currency" >${bvo.p_price * bvo.basket_count }</fmt:formatNumber>
 				<td>
 					<c:if test="${uid.equals(bvo.user_id) }">
-					<a href="${path }/AddSales.do?bno=${bvo.basket_no }" class="btn btn-primary">선택 상품 구매하러 가기</a>
+					<a href="${path }/AddOrder.do?bno=${bvo.basket_no }&uid=${uid }&p_code=${bvo.p_code }" class="btn btn-primary">선택 상품 구매하러 가기</a>
 					</c:if>
 				</td>
 			</tr>

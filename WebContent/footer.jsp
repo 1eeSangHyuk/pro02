@@ -2,6 +2,6 @@
     pageEncoding="utf-8"%>
 <footer class="ft">
   <div class="ft_wrap">
-	<p>푸터</p>
+	<h4>Copyright © (주)루메나 all rights reserved. design by design102</h4>
   </div>
 </footer>

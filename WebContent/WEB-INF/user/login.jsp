@@ -27,7 +27,7 @@
 			<tbody>
 				<tr>
 					<th><label for="">아이디 : </label></th>
-					<td><input type="text" id="id" name="id"></td>
+					<td><input type="text" id="id" name="id" autofocus="autofocus"></td>
 				</tr>
 				<tr>
 					<th><label for="">비밀번호 : </label></th>

@@ -81,8 +81,8 @@
 		        <li class="dropdown">
 		          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">마이페이지 <span class="caret"></span></a>
 		          <ul class="dropdown-menu" role="menu">
-		            <li><a href="#">회원정보</a></li>
-		            <li><a href="GetUserBasket.do?uid=${uid }">장바구니</a></li>
+		            <li><a href="${header_path }/MyPage.do?uid=${uid }">회원정보</a></li>
+		            <li><a href="${header_path }/GetUserBasket.do?uid=${uid }">장바구니</a></li>
 		            <li><a href="#">주문내역</a></li>
 		            <li class="divider"></li>
 		            <li><a href="#">고객센터(qna)</a></li>
@@ -95,11 +95,11 @@
 				<li class="dropdown">
 			        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">관리자페이지(전체 제품 관리 페이지) <span class="caret"></span></a>
 			        <ul class="dropdown-menu" role="menu">
-						<li><a href="UpdateProduct.do">전체 물품 재고관리 view</a></li>
-						<li><a href="ReceiptProduct.do">전체 물품에 대한 주문 관리view</a></li>
-						<li><a href="ProductListAll.do">물품 삭제 O -- 전체 물품 리스트로 포워딩</a></li>
-						<li><a href="ReviewProduct.do">전체 물품에 대한 리뷰 관리</a></li>
-						<li><a href="InsertProduct.do">물품 등록 O</a></li>
+						<li><a href="${header_path }/UpdateProduct.do">전체 물품 재고관리 view</a></li>
+						<li><a href="${header_path }/ReceiptProduct.do">전체 물품에 대한 주문 관리view</a></li>
+						<li><a href="${header_path }/ProductListAll.do">물품 삭제 O -- 전체 물품 리스트로 포워딩</a></li>
+						<li><a href="${header_path }/ReviewProduct.do">전체 물품에 대한 리뷰 관리</a></li>
+						<li><a href="${header_path }/InsertProduct.do">물품 등록 O</a></li>
 						<li class="divider"></li>
 					</ul>
 				</li>

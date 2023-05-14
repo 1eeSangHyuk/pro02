@@ -2,7 +2,7 @@ package com.fanMall.dto;
 
 public class Pay {
 	private	int	pay_no;
-	private String user_id;
+	private int order_no;
 	private	String	pay_type;
 	private int pay_price;
 	private String pay_date;
@@ -13,17 +13,17 @@ public class Pay {
 	public void setPay_no(int pay_no) {
 		this.pay_no = pay_no;
 	}
+	public int getOrder_no() {
+		return order_no;
+	}
+	public void setOrder_no(int order_no) {
+		this.order_no = order_no;
+	}
 	public String getPay_type() {
 		return pay_type;
 	}
 	public void setPay_type(String pay_type) {
 		this.pay_type = pay_type;
-	}
-	public String getUser_id() {
-		return user_id;
-	}
-	public void setUser_id(String user_id) {
-		this.user_id = user_id;
 	}
 	public int getPay_price() {
 		return pay_price;

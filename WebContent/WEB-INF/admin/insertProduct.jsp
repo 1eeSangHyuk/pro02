@@ -39,14 +39,8 @@
 						소분류 : 
  						<select id="catno" name="catno">	
 						</select>
-					</td>
-				</tr>
-				<tr>
-					<th><label for="p_code">제품코드</label></th>
-					<td>
-						<input type="number" id="p_code" name="p_code" maxlength="5" title="숫자로만 5자 이내로 작성해 주십시오."
-						 placeholder="숫자로만 5자 이내로 작성해 주십시오." required="required">
-						<input type="button" value="제품코드 생성하기" onclick="p_codeGen()">
+						<input type="hidden" id="p_code" name="p_code" maxlength="5" required="required" value="">
+						<input type="button" value="제품코드 발급버튼" onclick="p_codeGen()">
 					</td>
 				</tr>
 				<tr>
@@ -104,10 +98,10 @@
 	</form>
 	<script>
 		function p_codeGen(){
-			if($("#p_code").value==null){
+			if($("#p_code").value==""){
 				alert("제품코드를 입력해주세요");
 				$("#p_code").focus();
-			} else {
+			} else if ($("#cat1").value != null && $("#catno").value != null) {
 				var params = { p_code:$("#p_code").val(),
 							   catno:$("#catno").val() }
 				$.ajax({
@@ -117,9 +111,13 @@
 					encType:"UTF-8",
 					data:params,
 					success:function(result){
-						
+						var getPcode = result.result;
+						$("#p_code").value(getPcode);
 					}
 				})
+			} else {
+				alert("카테고리를 지정해 주세요.");
+				$("#cat1").focus();
 			}
 		}	
 		$(document).ready(function(){
@@ -148,11 +146,6 @@
 				}
 			})
 		});
-/* 		function getCat2(){
-			if(cat1.value()!=null){
-				window.open("GetCat2.do?cat1="+cat1.value(), "소분류", "width=400, height=300");
-			}
-		} */
 	</script>
 </div>
 <%@ include file="../../footer.jsp" %>

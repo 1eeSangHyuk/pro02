@@ -43,7 +43,7 @@
 				<td>
 					<c:set var="lh" value="${fn:length(noti.notice_file) }" />
 					<c:set var="download" value="${fn:substring(noti.notice_file,5,lh) }" />
-					<a href="${path }/${filepath1 }/${notice_file }">${download }</a>
+					<a href="${path }/${filepath }/${notice_file }">${download }</a>
 				</td>
 			</tr>
 			</c:if>	

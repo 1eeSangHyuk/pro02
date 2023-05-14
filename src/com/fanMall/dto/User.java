@@ -8,7 +8,7 @@ public class User {
 	private	String	user_addr;
 	private String  user_email;
 	private	String	user_regdate;
-	private String  user_point;
+	private int  user_point;
 	
 	public String getUser_id() {return user_id;}
 	public void setUser_id(String user_id) {this.user_id = user_id;}
@@ -24,6 +24,6 @@ public class User {
 	public void setUser_email(String user_email) {this.user_email = user_email;}
 	public String getUser_regdate() {return user_regdate;}
 	public void setUser_regdate(String user_regdate) {this.user_regdate = user_regdate;}
-	public String getUser_point() {return user_point;}
-	public void setUser_point(String user_point) {this.user_point = user_point;}
+	public int getUser_point() {return user_point;}
+	public void setUser_point(int user_point) {this.user_point = user_point;}
 }

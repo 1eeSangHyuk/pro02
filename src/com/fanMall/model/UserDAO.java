@@ -17,6 +17,8 @@ import javax.crypto.NoSuchPaddingException;
 
 
 
+
+
 import com.crypto.util.AES256;
 import com.fanMall.dto.User;
 
@@ -101,7 +103,40 @@ public class UserDAO {
 		return i;
 	}
 	
-	public User getUserSales(String user_id){
+	public int updateUser(User user, String user_id){
+		int i = 0;
+		try {
+			conn = Oracle11.getConnection();
+			pstmt = conn.prepareStatement(Oracle11.USER_UPDATE);
+			pstmt.setString(1, user.getUser_pw());
+			pstmt.setString(2, user.getUser_name());
+			pstmt.setString(3, user.getUser_phone());
+			pstmt.setString(4, user.getUser_addr());
+			pstmt.setString(5, user.getUser_email());
+			pstmt.setString(6, user_id);
+			i = pstmt.executeUpdate();
+		} catch (ClassNotFoundException | SQLException e) {
+			e.printStackTrace();
+		}
+		return i;
+	}
+	
+	public int deleteUser(String user_id){
+		int i = 0;
+		try {
+			conn = Oracle11.getConnection();
+			pstmt = conn.prepareStatement(Oracle11.USER_DELETE);
+			pstmt.setString(1, user_id);
+			i = pstmt.executeUpdate();		
+		} catch (ClassNotFoundException | SQLException e) {
+			e.printStackTrace();
+		} finally {
+			Oracle11.close(conn, pstmt);
+		}
+		return i;
+	}
+	
+	public User getUserById(String user_id){
 		User user = new User();
 		try {
 			conn = Oracle11.getConnection();
@@ -110,10 +145,30 @@ public class UserDAO {
 			rs = pstmt.executeQuery();
 			if(rs.next()){
 				user.setUser_id(rs.getString("user_id"));
+				try {
+					pw2 = AES256.decryptAES256(rs.getString("user_pw"), key);
+				} catch (InvalidKeyException | NoSuchPaddingException
+						| NoSuchAlgorithmException | InvalidKeySpecException
+						| InvalidAlgorithmParameterException
+						| BadPaddingException | IllegalBlockSizeException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				int i = pw2.length();
+				int k = 2;
+				String p1 = pw2.substring(0, k);
+				String p2 = "";
+				for (int j=k;j<i;j++){
+					p2 += "*";
+				}
+				user.setUser_pw(p1+p2);
+				user.setUser_name(rs.getString("user_name"));
 				user.setUser_addr(rs.getString("user_addr"));
 				user.setUser_email(rs.getString("user_email"));
 				user.setUser_phone(rs.getString("user_phone"));
 				user.setUser_addr(rs.getString("user_addr"));
+				user.setUser_regdate(rs.getString("user_regdate"));
+				user.setUser_point(rs.getInt("user_point"));
 			}
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();

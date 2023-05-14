@@ -1,7 +1,6 @@
 package com.fanMall.controller.user;
 
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
@@ -20,38 +19,38 @@ import com.crypto.util.AES256;
 import com.fanMall.dto.User;
 import com.fanMall.model.UserDAO;
 
-@WebServlet("/UserJoinPro.do")
-public class UserJoinProCtrl extends HttpServlet {
+
+@WebServlet("/UserUpdatePro.do")
+public class UserUpdateProCtrl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
-		String pw = request.getParameter("pw1"), key = "%03x";
 		
+		String key = "%03x";
+		User user = new User();
+		String user_id = request.getParameter("id");
 		try {
-			pw = AES256.encryptAES256(pw, key);
+			user.setUser_pw(AES256.encryptAES256(request.getParameter("pw1"), key));
 		} catch (InvalidKeyException | NoSuchAlgorithmException
 				| InvalidKeySpecException | NoSuchPaddingException
-				| InvalidParameterSpecException | UnsupportedEncodingException
-				| BadPaddingException | IllegalBlockSizeException e1) {
-			e1.printStackTrace();
+				| InvalidParameterSpecException | BadPaddingException
+				| IllegalBlockSizeException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-		
-		User user = new User();
-		user.setUser_id(request.getParameter("id"));
-		user.setUser_pw(pw);
 		user.setUser_name(request.getParameter("name1"));
 		user.setUser_phone(request.getParameter("phone"));
 		user.setUser_addr(request.getParameter("address1")+" "+request.getParameter("address2"));
 		user.setUser_email(request.getParameter("email"));
 		
 		UserDAO udao = new UserDAO();
-		int i = udao.insertUser(user);
-		if (i >= 1){
-			response.sendRedirect("UserLogin.do");
+		int i = udao.updateUser(user, user_id);
+		if (i==1){
+			response.sendRedirect(request.getContextPath()+"/MyPage.do?uid="+user_id);
 		} else {
-			response.sendRedirect("UserSignUp.do");
+			response.sendRedirect(request.getContextPath()+"/UserUpdate.do?user_id="+user_id);
 		}
 	}
 }
