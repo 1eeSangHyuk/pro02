@@ -39,7 +39,7 @@ public class Oracle11 {
 	final static String PROD_INSERT = "INSERT INTO PRODUCT VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)";
 	final static String CAT_SELECT_CAT1 = "SELECT SUBSTR(CATNO, 0, 2) AS CAT1, CATGROUP FROM CATEGORY WHERE CATNO LIKE '%01'";
 	final static String CAT_SELECT_CAT2 = "SELECT CATNO, SUBSTR(CATNO, 0, 2) AS CAT1, SUBSTR(CATNO, 3, 4) AS CAT2, CATGROUP, CATNAME FROM CATEGORY WHERE CATNO LIKE ?||'%'";
-	final static String GET_P_CODE_MAX_INCAT = "select p_code from (select * from product where catno like ? order by p_code desc) where rownum=1";
+	final static String GET_P_CODE_MAX_INCAT = "select p_code from (select * from product where catno like ?||'%' order by p_code desc) where rownum=1";
 	final static String GET_P_CODE = "SELECT P_CODE FROM PRODUCT WHERE CATNO LIKE ? ORDER BY P_CODE DESC";
 	
 	//장바구니
@@ -49,16 +49,19 @@ public class Oracle11 {
 			+ " a.basket_count, b.p_price, b.p_amount from basket a, product b"
 			+ " where a.p_code = b.p_code and a.user_id = ?"; //사용자가 본인 장바구니 조회
 	final static String DELETE_BASKET = "delete from basket where basket_no=?";
+	final static String INSERT_BASKET = "INSERT INTO BASKET VALUES(BASKET_NO_SEQ.NEXTVAL, ?, ?, 1)";
 	
 	//주문(order)
 	final static String ORDER_NO_GENERATOR = "SELECT ORDER_NO FROM (SELECT ORDER_NO FROM PROD_ORDER ORDER BY ORDER_NO DESC) WHERE ROWNUM=1";
 	final static String ADD_ORDER = "INSERT INTO PROD_ORDER VALUES(?, ?, ?, ?, ?, default, ?, ?, ?, ?, default)";
 	final static String DELIVER_NUM_GENERATOR = "SELECT DELIVER_NUM FROM (SELECT DELIVER_NUM FROM PROD_ORDER ORDER BY DELIVER_NUM DESC) WHERE ROWNUM=1";
 	final static String REMOVE_PRODUCT = "UPDATE PRODUCT SET P_AMOUNT=P_AMOUNT-? WHERE P_CODE=?";
+	final static String MY_ORDER = "select a.*, b.p_name, b.pic1 from prod_order a, product b where a.user_id=? and a.p_code = b.p_code";
 	
 	//결제
 	final static String PAY_NO_GENERATOR = "SELECT PAY_NO FROM (SELECT PAY_NO FROM PAY ORDER BY PAY_NO DESC) WHERE ROWNUM=1";
 	final static String ADD_PAY = "INSERT INTO PAY VALUES(?, ?, ?, ?, DEFAULT)";
+	
 	
 	static Connection getConnection() throws ClassNotFoundException, SQLException{
 		Class.forName(driver);

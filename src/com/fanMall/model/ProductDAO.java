@@ -29,9 +29,9 @@ public class ProductDAO {
 				prod.setP_about(rs.getString("p_about"));
 				prod.setP_amount(rs.getInt("p_amount"));
 				prod.setCatno(rs.getString("catno"));
-				prod.setPic1(rs.getString("pic1"));
-				prod.setPic2(rs.getString("pic2"));
-				prod.setPic3(rs.getString("pic3"));
+				prod.setPic1(rs.getString("pic1").substring(2));
+				prod.setPic2(rs.getString("pic2").substring(2));
+				prod.setPic3(rs.getString("pic3").substring(2));
 				prodList.add(prod);
 			}
 		} catch (ClassNotFoundException | SQLException e) {e.printStackTrace();
@@ -219,7 +219,7 @@ public class ProductDAO {
 	}
 	
 	public String getP_codeGenerator(String cat1){
-		String p_codeMax = "";
+		String p_codeMax = "0";
 		try {
 			conn = Oracle11.getConnection();
 			pstmt = conn.prepareStatement(Oracle11.GET_P_CODE_MAX_INCAT);
@@ -227,6 +227,8 @@ public class ProductDAO {
 			rs = pstmt.executeQuery();
 			if(rs.next()){
 				p_codeMax = rs.getString("p_code");
+			} else {
+				p_codeMax = "0";
 			}
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
@@ -234,15 +236,15 @@ public class ProductDAO {
 			Oracle11.close(conn, pstmt, rs);
 		}
 		int p_code = Integer.parseInt(p_codeMax) + 1;
+		System.out.println(p_code);
 		int i = p_codeMax.length();
-		if(p_codeMax == ""){
-			p_codeMax = "001";
+		
+		if(i==2){
+			p_codeMax = "0" + p_code;
+		} else if(i==1) {
+			p_codeMax = "00" + p_code;
 		} else {
-			if(i==2){
-				p_codeMax = "0" + p_code;
-			} else if(i==1) {
-				p_codeMax = "00" + p_code;
-			}
+			p_codeMax = "" + p_code;
 		}
 		return p_codeMax;
 	}

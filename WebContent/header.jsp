@@ -83,7 +83,7 @@
 		          <ul class="dropdown-menu" role="menu">
 		            <li><a href="${header_path }/MyPage.do?uid=${uid }">회원정보</a></li>
 		            <li><a href="${header_path }/GetUserBasket.do?uid=${uid }">장바구니</a></li>
-		            <li><a href="#">주문내역</a></li>
+		            <li><a href="${header_path }/MyOrder.do?uid=${uid }">주문내역</a></li>
 		            <li class="divider"></li>
 		            <li><a href="#">고객센터(qna)</a></li>
 		          </ul>

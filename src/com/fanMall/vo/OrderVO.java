@@ -1,6 +1,6 @@
-package com.fanMall.dto;
+package com.fanMall.vo;
 
-public class Prod_order {
+public class OrderVO {
 	private	int	order_no;
 	private	String	user_id;
 	private	String	p_code;
@@ -10,8 +10,10 @@ public class Prod_order {
 	private String user_phone;
 	private	String	order_addr;
 	private	String	deliver_company;
-	private	String	deliver_num;
+	private	int	deliver_num;
 	private	String	deliver_state;
+	private	String	p_name;
+	private String pic1;
 	public int getOrder_no() {
 		return order_no;
 	}
@@ -63,20 +65,31 @@ public class Prod_order {
 	public String getDeliver_company() {
 		return deliver_company;
 	}
-	public void setDeliver_company(String order_company) {
-		this.deliver_company = order_company;
+	public void setDeliver_company(String deliver_company) {
+		this.deliver_company = deliver_company;
 	}
-	public String getDeliver_num() {
+	public int getDeliver_num() {
 		return deliver_num;
 	}
-	public void setDeliver_num(String order_num) {
-		this.deliver_num = order_num;
+	public void setDeliver_num(int deliver_num) {
+		this.deliver_num = deliver_num;
 	}
 	public String getDeliver_state() {
 		return deliver_state;
 	}
-	public void setDeliver_state(String order_state) {
-		this.deliver_state = order_state;
+	public void setDeliver_state(String deliver_state) {
+		this.deliver_state = deliver_state;
 	}
-
+	public String getP_name() {
+		return p_name;
+	}
+	public void setP_name(String p_name) {
+		this.p_name = p_name;
+	}
+	public String getPic1() {
+		return pic1;
+	}
+	public void setPic1(String pic1) {
+		this.pic1 = pic1;
+	}
 }

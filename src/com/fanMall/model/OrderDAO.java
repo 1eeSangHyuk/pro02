@@ -4,9 +4,11 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import com.fanMall.dto.Pay;
 import com.fanMall.dto.Prod_order;
+import com.fanMall.vo.OrderVO;
 
 public class OrderDAO {
 	private Connection conn = null;
@@ -47,7 +49,7 @@ public class OrderDAO {
 		return i+1;
 	}
 	
-	public int deliverNumGenerator(){
+	public String deliverNumGenerator(){
 		int i = 0;
 		try {
 			conn = Oracle11.getConnection();
@@ -62,9 +64,12 @@ public class OrderDAO {
 			Oracle11.close(conn, pstmt, rs);
 		}
 		i += 1;
-		return i;
+		String j =  i + "";
+		for (int a=20-j.length();a>0;a--){
+			j = "0" + j;
+		}
+		return j;
 	}
-	
 	
 	public int addOrder(Prod_order order, Pay pay, int basket_no ){
 		int i = 0;
@@ -82,9 +87,9 @@ public class OrderDAO {
 			if (order.getDeliver_company() != null){
 				pstmt.setString(8, order.getDeliver_company());
 			} else {
-				pstmt.setString(8, "default");
+				pstmt.setString(8, "우체국택배");
 			}
-			pstmt.setInt(9, order.getDeliver_num());
+			pstmt.setString(9, order.getDeliver_num());
 			i += pstmt.executeUpdate();
 			
 			pstmt = conn.prepareStatement(Oracle11.ADD_PAY);
@@ -116,4 +121,35 @@ public class OrderDAO {
 		return i;
 	}
 	
+	public ArrayList<OrderVO> myOrder(String user_id){
+		ArrayList<OrderVO> orderVOList = new ArrayList<OrderVO>();
+		OrderVO orderVO = new OrderVO();
+		try {
+			conn = Oracle11.getConnection();
+			pstmt = conn.prepareStatement(Oracle11.MY_ORDER);
+			pstmt.setString(1, user_id);;
+			rs = pstmt.executeQuery();
+			while (rs.next()){
+				orderVO.setOrder_no(rs.getInt("order_no"));
+				orderVO.setUser_id(rs.getString("user_id"));
+				orderVO.setP_code(rs.getString("p_code"));
+				orderVO.setOrder_count(rs.getInt("order_count"));
+				orderVO.setOrder_price(rs.getInt("order_price"));
+				orderVO.setOrder_date(rs.getString("order_date"));
+				orderVO.setUser_phone(rs.getString("user_phone"));
+				orderVO.setOrder_addr(rs.getString("order_addr"));
+				orderVO.setDeliver_company(rs.getString("deliver_company"));
+				orderVO.setDeliver_num(rs.getInt("deliver_num"));
+				orderVO.setDeliver_state(rs.getString("deliver_state"));
+				orderVO.setP_name(rs.getString("p_name"));
+				orderVO.setPic1(rs.getString("pic1"));
+				orderVOList.add(orderVO);
+			}
+		} catch (ClassNotFoundException | SQLException e) {
+			e.printStackTrace();
+		} finally {
+			Oracle11.close(conn, pstmt, rs);
+		}
+		return orderVOList;
+	}
 }

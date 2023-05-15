@@ -85,4 +85,31 @@ public class BasketDAO {
 		}
 		return basketVOList;
 	}
-}
+
+	public int insertBasket(String p_code, String user_id) {
+		int i = 0;
+		try {
+			conn = Oracle11.getConnection();
+			pstmt = conn.prepareStatement(Oracle11.INSERT_BASKET);
+			pstmt.setString(1, user_id);
+			pstmt.setString(2, p_code);
+			i = pstmt.executeUpdate();
+		} catch (ClassNotFoundException | SQLException e) {
+			e.printStackTrace();
+		}
+		return i;
+	}
+	
+	public int deleteBasket(int basket_no){
+		int i = 0;
+		try {
+			conn = Oracle11.getConnection();
+			pstmt = conn.prepareStatement(Oracle11.DELETE_BASKET);
+			pstmt.setInt(1, basket_no);
+			i = pstmt.executeUpdate();
+		} catch (ClassNotFoundException | SQLException e) {
+			e.printStackTrace();
+		}
+		return i;
+	}
+} 

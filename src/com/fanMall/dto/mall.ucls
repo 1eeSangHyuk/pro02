@@ -1,54 +1,72 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <class-diagram version="1.2.4" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
   associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
-  <class id="1" language="java" name="com.fanMall.dto.Basket" project="proj02" 
-    file="/proj02/src/com/fanMall/dto/Basket.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="297" width="149" x="302" y="-27"/>    
+  <class id="1" language="java" name="com.fanMall.dto.Category" project="proj02" 
+    file="/proj02/src/com/fanMall/dto/Category.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="351" width="144" x="232" y="-162"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="2" language="java" name="com.fanMall.dto.User" project="proj02" 
-    file="/proj02/src/com/fanMall/dto/User.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="513" width="166" x="491" y="-27"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="3" language="java" name="com.fanMall.dto.Pay" project="proj02" file="/proj02/src/com/fanMall/dto/Pay.java" 
-    binary="false" corner="BOTTOM_RIGHT">    
-    <position height="243" width="145" x="697" y="-27"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="4" language="java" name="com.fanMall.dto.Prod_order" project="proj02" 
+  <class id="2" language="java" name="com.fanMall.dto.Prod_order" project="proj02" 
     file="/proj02/src/com/fanMall/dto/Prod_order.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="729" width="178" x="882" y="-27"/>    
+    <position height="675" width="183" x="416" y="-162"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="5" language="java" name="com.fanMall.dto.Review" project="proj02" 
+  <class id="3" language="java" name="com.fanMall.dto.Review" project="proj02" 
     file="/proj02/src/com/fanMall/dto/Review.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="405" width="164" x="1100" y="-27"/>    
+    <position height="405" width="164" x="639" y="-162"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="6" language="java" name="com.fanMall.dto.Product" project="proj02" 
+  <class id="4" language="java" name="com.fanMall.dto.User" project="proj02" 
+    file="/proj02/src/com/fanMall/dto/User.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="513" width="166" x="843" y="-162"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="5" language="java" name="com.fanMall.dto.Basket" project="proj02" 
+    file="/proj02/src/com/fanMall/dto/Basket.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="297" width="149" x="1049" y="-162"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="6" language="java" name="com.fanMall.dto.Pay" project="proj02" file="/proj02/src/com/fanMall/dto/Pay.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="351" width="145" x="1238" y="-162"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="7" language="java" name="com.fanMall.dto.Notice" project="proj02" 
+    file="/proj02/src/com/fanMall/dto/Notice.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="459" width="157" x="1423" y="-162"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="8" language="java" name="com.fanMall.dto.Product" project="proj02" 
     file="/proj02/src/com/fanMall/dto/Product.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="351" width="139" x="1304" y="-27"/>    
+    <position height="567" width="139" x="1620" y="-162"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      

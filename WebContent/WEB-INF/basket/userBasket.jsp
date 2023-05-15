@@ -41,6 +41,7 @@
 				<td>
 					<c:if test="${uid.equals(bvo.user_id) }">
 					<a href="${path }/AddOrder.do?bno=${bvo.basket_no }&uid=${uid }&p_code=${bvo.p_code }" class="btn btn-primary">선택 상품 구매하러 가기</a>
+					<a href="${path }/DeleteBasket.do?basket_no=${bvo.basket_no }&uid=${uid }" class="btn btn-primary">장바구니에서 삭제하기</a>
 					</c:if>
 				</td>
 			</tr>

@@ -41,6 +41,8 @@
 						</select>
 						<input type="hidden" id="p_code" name="p_code" maxlength="5" required="required" value="">
 						<input type="button" value="제품코드 발급버튼" onclick="p_codeGen()">
+						<br>
+						<p id="msg"></p>
 					</td>
 				</tr>
 				<tr>
@@ -101,9 +103,8 @@
 			if($("#p_code").value==""){
 				alert("제품코드를 입력해주세요");
 				$("#p_code").focus();
-			} else if ($("#cat1").value != null && $("#catno").value != null) {
-				var params = { p_code:$("#p_code").val(),
-							   catno:$("#catno").val() }
+			} else if ($("#cat1").value != "" && $("#catno").value != "") {
+				var params = { catno:$("#catno").val() }
 				$.ajax({
 					url:"${path }/GetP_code.do",
 					type:"post",
@@ -112,6 +113,7 @@
 					data:params,
 					success:function(result){
 						var getPcode = result.result;
+						alert("제품 코드 : "+getPcode);
 						$("#p_code").value(getPcode);
 					}
 				})

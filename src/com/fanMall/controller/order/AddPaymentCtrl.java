@@ -50,7 +50,7 @@ public class AddPaymentCtrl extends HttpServlet {
 		i = odao.addOrder(order, pay, basket_no);
 		System.out.println(i);
 		if(i>=3){
-			response.sendRedirect(request.getContextPath());
+			response.sendRedirect("/MyOrder.do?order_no="+order.getOrder_no());
 		} else {
 			response.sendRedirect("/AddOrder.do?bno="+basket_no+"&uid="+user_id+"&p_code="+p_code);
 		}

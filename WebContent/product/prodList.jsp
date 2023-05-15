@@ -36,8 +36,8 @@
 			<c:if test="${!empty uid && !uid.equals('admin') }">
 			<tr>
 	        	<td>
-	        		<a href="InsertBasket.do?p_code=${prod.p_code }" class="btn btn-default" role="button">장바구니에 담기</a>
-	        		<a href="InsertSales.do?p_code=${prod.p_code }" class="btn btn-default" role="button">바로 구매하기</a>
+	        		<a href="InsertBasket.do?p_code=${prod.p_code }&uid=${uid }" class="btn btn-default" role="button">장바구니에 담기</a>
+	        		<a href="InsertOrder.do?p_code=${prod.p_code }" class="btn btn-default" role="button">바로 구매하기</a>
 	        	</td>
 			</tr>
 			</c:if>

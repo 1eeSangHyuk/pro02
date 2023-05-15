@@ -18,7 +18,6 @@ public class GetP_codeCtrl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String p_code = request.getParameter("p_code");
 		String cat1 = request.getParameter("catno").substring(0, 2);
 		ProductDAO pdao = new ProductDAO();
 		String newP_code = pdao.getP_codeGenerator(cat1);

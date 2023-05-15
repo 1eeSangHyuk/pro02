@@ -60,6 +60,9 @@
 	<a href="${path }/UserUpdate.do?user_id=${user.user_id }" class="btn btn-primary">회원정보 수정</a>
 	<a href="${path }/UserDelete.do?user_id=${user.user_id }" class="btn btn-primary">회원 탈퇴</a>
 </div>
+<div>
+	<a href="javascript:history.go(-1)" class="btn btn-primary">뒤로 가기</a>
+</div>
 <%@ include file="../../footer.jsp" %>
 </body>
 </html>
