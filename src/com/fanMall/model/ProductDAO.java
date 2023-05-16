@@ -29,9 +29,15 @@ public class ProductDAO {
 				prod.setP_about(rs.getString("p_about"));
 				prod.setP_amount(rs.getInt("p_amount"));
 				prod.setCatno(rs.getString("catno"));
-				prod.setPic1(rs.getString("pic1").substring(2));
-				prod.setPic2(rs.getString("pic2").substring(2));
-				prod.setPic3(rs.getString("pic3").substring(2));
+				if (!rs.getString("pic1").equals("")){
+					prod.setPic1(rs.getString("pic1").substring(2));
+				}
+				if (!rs.getString("pic2").equals("")){
+					prod.setPic2(rs.getString("pic2").substring(2));
+				}
+				if (!rs.getString("pic3").equals("")){
+					prod.setPic3(rs.getString("pic3").substring(2));
+				}
 				prodList.add(prod);
 			}
 		} catch (ClassNotFoundException | SQLException e) {e.printStackTrace();

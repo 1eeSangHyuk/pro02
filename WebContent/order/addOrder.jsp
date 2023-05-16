@@ -84,7 +84,7 @@
 						<th>결제 금액</th>
 						<td>
 							<label for="payamount" id="totPrice">${prod.p_price * basket.basket_count }</label>
-							<input type="hidden" name="payamount" id="payamount">
+							<input type="hidden" name="payamount" id="payamount" value="">
 						</td>
 					</tr>
 					<tr>

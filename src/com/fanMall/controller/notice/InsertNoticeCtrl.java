@@ -21,5 +21,4 @@ public class InsertNoticeCtrl extends HttpServlet {
 		RequestDispatcher view = request.getRequestDispatcher("WEB-INF/notice/insertNotice.jsp");
 		view.forward(request, response);
 	}
-
 }

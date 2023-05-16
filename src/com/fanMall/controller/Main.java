@@ -26,5 +26,4 @@ public class Main extends HttpServlet {
 		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/index.jsp");
 		view.forward(request, response);
 	}
-
 }

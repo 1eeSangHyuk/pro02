@@ -103,7 +103,7 @@ public class UserDAO {
 		return i;
 	}
 	
-	public int updateUser(User user, String user_id){
+	public int updateUser(User user){
 		int i = 0;
 		try {
 			conn = Oracle11.getConnection();
@@ -113,7 +113,7 @@ public class UserDAO {
 			pstmt.setString(3, user.getUser_phone());
 			pstmt.setString(4, user.getUser_addr());
 			pstmt.setString(5, user.getUser_email());
-			pstmt.setString(6, user_id);
+			pstmt.setString(6, user.getUser_id());
 			i = pstmt.executeUpdate();
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();

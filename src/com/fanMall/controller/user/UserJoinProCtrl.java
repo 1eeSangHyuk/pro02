@@ -43,7 +43,7 @@ public class UserJoinProCtrl extends HttpServlet {
 		user.setUser_pw(pw);
 		user.setUser_name(request.getParameter("name1"));
 		user.setUser_phone(request.getParameter("phone"));
-		user.setUser_addr(request.getParameter("address1")+" "+request.getParameter("address2"));
+		user.setUser_addr(request.getParameter("address1")+" "+request.getParameter("address2")+"("+request.getParameter("postcode")+")");
 		user.setUser_email(request.getParameter("email"));
 		
 		UserDAO udao = new UserDAO();

@@ -31,22 +31,22 @@ public class UserUpdateProCtrl extends HttpServlet {
 		String key = "%03x";
 		User user = new User();
 		String user_id = request.getParameter("id");
+		user.setUser_id(user_id);
 		try {
 			user.setUser_pw(AES256.encryptAES256(request.getParameter("pw1"), key));
 		} catch (InvalidKeyException | NoSuchAlgorithmException
 				| InvalidKeySpecException | NoSuchPaddingException
 				| InvalidParameterSpecException | BadPaddingException
 				| IllegalBlockSizeException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		user.setUser_name(request.getParameter("name1"));
 		user.setUser_phone(request.getParameter("phone"));
-		user.setUser_addr(request.getParameter("address1")+" "+request.getParameter("address2"));
+		user.setUser_addr(request.getParameter("address1")+" "+request.getParameter("address2")+"("+request.getParameter("postcode")+")");
 		user.setUser_email(request.getParameter("email"));
 		
 		UserDAO udao = new UserDAO();
-		int i = udao.updateUser(user, user_id);
+		int i = udao.updateUser(user);
 		if (i==1){
 			response.sendRedirect(request.getContextPath()+"/MyPage.do?uid="+user_id);
 		} else {

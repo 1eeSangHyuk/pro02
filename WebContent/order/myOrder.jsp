@@ -31,11 +31,10 @@
 				<th>배송회사</th>
 				<th>운송장번호</th>
 				<th>배송상태</th>
-				<th>취소하기</th>
 			</tr>
 		</thead>
-		<c:forEach var="order" items="${orderVOList }">
 		<tbody>
+		<c:forEach var="order" items="${orderVOList }">
 			<tr>
 				<td>${order.order_no }</td>
 				<td><img src="${path }/product/${order.pic1 }" alt="${order.p_name }" width="200" height="200"></td>
@@ -50,18 +49,27 @@
 				<td>${order.order_addr }</td>
 				<td>${order.deliver_company }</td>
 				<td>${order.deliver_num }</td>
-				<td>${order.deliver_state }</td>
-				<td>
+				<td>${order.deliver_state }
 					<c:if test="${order.deliver_state eq '배송 전'}">
-					<a href="" class="btn btn-primary">주문 취소하기</a>
+					<br>
+					<a href="${path }/CanclePay.do?order_no=${order.order_no }" class="btn btn-primary">주문 취소하기</a>
 					</c:if>
 					<c:if test="${order.deliver_state != '배송 전'}">
-					배송 시작 이후로는 주문을 취소하실 수 없습니다.
+					<br>
+					<a href="${path }/ReturnBuy.do?order_no=${order.order_no }">반품 요청</a>
+					<a href="${path }/OkBuy.do?order_no=${order.order_no }">구매 확정하기</a>
 					</c:if>
 				</td>
 			</tr>
-		</tbody>
 		</c:forEach>
+		<c:if test="${empty orderVOList }">
+			<tr>
+				<td colspan="11">
+					주문내역이 존재하지 않습니다.
+				</td>
+			</tr>
+		</c:if>
+		</tbody>
 	</table>
 	<div>
 		<a href="javascript:history.go(-1)" class="btn btn-primary">뒤로가기</a>

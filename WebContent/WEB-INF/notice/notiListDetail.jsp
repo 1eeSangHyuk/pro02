@@ -54,10 +54,10 @@
 		</tbody>
 	</table>
 	<div class="btn-group">
-		<a href="${path }/InsertNotice.do" class="btn btn-primary">글 쓰기</a>&nbsp;&nbsp;&nbsp;&nbsp;
+		<a href="${path }/InsertNotice.do" class="btn btn-primary">공지사항 작성하기</a>&nbsp;&nbsp;&nbsp;&nbsp;
 		<c:if test="${uid.equals(noti.user_id) || uid.equals('admin') }">
-			<a href="${path }/UpdateNotice.do?notice_no=${noti.notice_no }" class="btn btn-primary">글 수정하기</a>&nbsp;&nbsp;&nbsp;&nbsp;
-			<a href="${path }/DeleteNotice.do?notice_no=${noti.notice_no }" class="btn btn-primary">글 삭제하기</a>&nbsp;&nbsp;&nbsp;&nbsp;
+			<a href="${path }/UpdateNotice.do?notice_no=${noti.notice_no }" class="btn btn-primary">공지사항 수정하기</a>&nbsp;&nbsp;&nbsp;&nbsp;
+			<a href="${path }/DeleteNotice.do?notice_no=${noti.notice_no }" class="btn btn-primary">공지사항 삭제하기</a>&nbsp;&nbsp;&nbsp;&nbsp;
 		</c:if>
 	</div>
 	<br>

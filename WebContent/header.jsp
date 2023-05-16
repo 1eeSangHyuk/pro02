@@ -97,9 +97,10 @@
 			        <ul class="dropdown-menu" role="menu">
 						<li><a href="${header_path }/UpdateProduct.do">전체 물품 재고관리 view</a></li>
 						<li><a href="${header_path }/ReceiptProduct.do">전체 물품에 대한 주문 관리view</a></li>
+						<li><a href="${header_path }/InsertCategory.do">새로운 카테고리 등록</a></li>
+						<li><a href="${header_path }/InsertProduct.do">새로운 물품 등록 O</a></li>
 						<li><a href="${header_path }/ProductListAll.do">물품 삭제 O -- 전체 물품 리스트로 포워딩</a></li>
 						<li><a href="${header_path }/ReviewProduct.do">전체 물품에 대한 리뷰 관리</a></li>
-						<li><a href="${header_path }/InsertProduct.do">물품 등록 O</a></li>
 						<li class="divider"></li>
 					</ul>
 				</li>

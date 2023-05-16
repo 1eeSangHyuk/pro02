@@ -35,8 +35,8 @@
 				</tr>
 				<tr>
 					<td colspan="2">
-						<input type="submit" value="로그인하기">
-						<input type="reset" value="리셋">
+						<input type="submit" value="로그인하기" class="btn btn-primary">
+						<input type="reset" value="리셋" class="btn btn-primary">
 					</td>
 				</tr>
 			</tbody>

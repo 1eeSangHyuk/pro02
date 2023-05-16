@@ -84,11 +84,7 @@ public class OrderDAO {
 			pstmt.setInt(5, order.getOrder_price());
 			pstmt.setString(6, order.getUser_phone());
 			pstmt.setString(7, order.getOrder_addr());
-			if (order.getDeliver_company() != null){
-				pstmt.setString(8, order.getDeliver_company());
-			} else {
-				pstmt.setString(8, "우체국택배");
-			}
+			pstmt.setString(8, order.getDeliver_company());
 			pstmt.setString(9, order.getDeliver_num());
 			i += pstmt.executeUpdate();
 			

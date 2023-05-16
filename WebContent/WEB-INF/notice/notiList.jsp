@@ -45,7 +45,7 @@
 		</tbody>
 	</table>
 	<div class="btn-group">
-		<a href="${path }/InsertNotice.do" class="btn btn-primary">글 쓰기</a>&nbsp;&nbsp;&nbsp;&nbsp;
+		<a href="${path }/InsertNotice.do" class="btn btn-primary">공지사항 작성하기</a>&nbsp;&nbsp;&nbsp;&nbsp;
 	</div>
 </div>
 <%@ include file="../../footer.jsp" %>

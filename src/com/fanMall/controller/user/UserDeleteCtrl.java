@@ -29,5 +29,4 @@ public class UserDeleteCtrl extends HttpServlet {
 			response.sendRedirect("/UserDelete.do?user_id="+user_id);
 		}
 	}
-
 }

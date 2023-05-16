@@ -26,5 +26,4 @@ public class MyPageCtrl extends HttpServlet {
 		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/user/myPage.jsp");
 		view.forward(request, response);
 	}
-
 }

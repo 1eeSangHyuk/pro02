@@ -28,5 +28,4 @@ public class MyOrderCtrl extends HttpServlet {
 		RequestDispatcher view = request.getRequestDispatcher("/order/myOrder.jsp");
 		view.forward(request, response);
 	}
-
 }

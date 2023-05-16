@@ -18,8 +18,9 @@ public class UserLogoutCtrl extends HttpServlet {
 		HttpSession session = request.getSession();
 		session.invalidate();
 		
-		RequestDispatcher view = request.getRequestDispatcher(request.getContextPath());
-		view.forward(request, response);
+		response.sendRedirect(request.getContextPath());
+//		RequestDispatcher view = request.getRequestDispatcher(request.getContextPath());
+//		view.forward(request, response);
 	}
 
 }
