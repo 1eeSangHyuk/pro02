@@ -30,8 +30,6 @@
 	    <!-- Collect the nav links, forms, and other content for toggling -->
 	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 	      <ul class="nav navbar-nav">
-	        <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
-	        <li><a href="${header_path }/NoticeList.do">공지사항</a></li>
 	        <li class="dropdown">
 	          <a href="${header_path }/ProductListAll.do?catno=01" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">fan <span class="caret"></span></a>
 	          <ul class="dropdown-menu" role="menu">
@@ -84,8 +82,14 @@
 		            <li><a href="${header_path }/MyPage.do?uid=${uid }">회원정보</a></li>
 		            <li><a href="${header_path }/GetUserBasket.do?uid=${uid }">장바구니</a></li>
 		            <li><a href="${header_path }/MyOrder.do?uid=${uid }">주문내역</a></li>
-		            <li class="divider"></li>
-		            <li><a href="#">고객센터(qna)</a></li>
+		          </ul>
+		        </li>
+		        <li class="dropdown">
+		          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">커뮤니티 <span class="caret"></span></a>
+		          <ul class="dropdown-menu" role="menu">
+		            <li><a href="${header_path }/NoticeList.do">공지사항</a></li>
+		            <li><a href="${header_path }/">자주하는 질문</a></li>
+		            <li><a href="${header_path }/">QnA</a></li>
 		          </ul>
 		        </li>
 				<li><a href="${header_path }/UserLogout.do">로그아웃</a></li>
@@ -96,11 +100,11 @@
 			        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">관리자페이지(전체 제품 관리 페이지) <span class="caret"></span></a>
 			        <ul class="dropdown-menu" role="menu">
 						<li><a href="${header_path }/UpdateProduct.do">전체 물품 재고관리 view</a></li>
-						<li><a href="${header_path }/ReceiptProduct.do">전체 물품에 대한 주문 관리view</a></li>
+						<li><a href="${header_path }/OrderListAll.do">주문 관리 ~</a></li>
 						<li><a href="${header_path }/InsertCategory.do">새로운 카테고리 등록</a></li>
 						<li><a href="${header_path }/InsertProduct.do">새로운 물품 등록 O</a></li>
-						<li><a href="${header_path }/ProductListAll.do">물품 삭제 O -- 전체 물품 리스트로 포워딩</a></li>
-						<li><a href="${header_path }/ReviewProduct.do">전체 물품에 대한 리뷰 관리</a></li>
+						<li><a href="${header_path }/ProductListAll.do">물품 삭제 O</a></li>
+						<li><a href="${header_path }/ReviewProduct.do">리뷰 관리</a></li>
 						<li class="divider"></li>
 					</ul>
 				</li>

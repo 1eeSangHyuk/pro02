@@ -28,9 +28,9 @@
 				<th>가격</th>
 				<th>구매일</th>
 				<th>배송주소</th>
+				<th>배송상태</th>
 				<th>배송회사</th>
 				<th>운송장번호</th>
-				<th>배송상태</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -47,12 +47,10 @@
 				</td>
 				<td>${order.order_date }</td>
 				<td>${order.order_addr }</td>
-				<td>${order.deliver_company }</td>
-				<td>${order.deliver_num }</td>
 				<td>${order.deliver_state }
 					<c:if test="${order.deliver_state eq '배송 전'}">
 					<br>
-					<a href="${path }/CanclePay.do?order_no=${order.order_no }" class="btn btn-primary">주문 취소하기</a>
+					<a href="${path }/CancelPay.do?order_no=${order.order_no }" class="btn btn-primary">주문 취소하기</a>
 					</c:if>
 					<c:if test="${order.deliver_state != '배송 전'}">
 					<br>
@@ -60,6 +58,8 @@
 					<a href="${path }/OkBuy.do?order_no=${order.order_no }">구매 확정하기</a>
 					</c:if>
 				</td>
+				<td>${order.deliver_company }</td>
+				<td>${order.deliver_num }</td>
 			</tr>
 		</c:forEach>
 		<c:if test="${empty orderVOList }">

@@ -29,13 +29,13 @@ public class ProductDAO {
 				prod.setP_about(rs.getString("p_about"));
 				prod.setP_amount(rs.getInt("p_amount"));
 				prod.setCatno(rs.getString("catno"));
-				if (!rs.getString("pic1").equals("")){
+				if (rs.getString("pic1") != null){
 					prod.setPic1(rs.getString("pic1").substring(2));
 				}
-				if (!rs.getString("pic2").equals("")){
+				if (rs.getString("pic2") != null){
 					prod.setPic2(rs.getString("pic2").substring(2));
 				}
-				if (!rs.getString("pic3").equals("")){
+				if (rs.getString("pic3") != null){
 					prod.setPic3(rs.getString("pic3").substring(2));
 				}
 				prodList.add(prod);

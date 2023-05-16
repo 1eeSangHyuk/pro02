@@ -119,13 +119,13 @@ public class OrderDAO {
 	
 	public ArrayList<OrderVO> myOrder(String user_id){
 		ArrayList<OrderVO> orderVOList = new ArrayList<OrderVO>();
-		OrderVO orderVO = new OrderVO();
 		try {
 			conn = Oracle11.getConnection();
 			pstmt = conn.prepareStatement(Oracle11.MY_ORDER);
-			pstmt.setString(1, user_id);;
+			pstmt.setString(1, user_id);
 			rs = pstmt.executeQuery();
 			while (rs.next()){
+				OrderVO orderVO = new OrderVO();
 				orderVO.setOrder_no(rs.getInt("order_no"));
 				orderVO.setUser_id(rs.getString("user_id"));
 				orderVO.setP_code(rs.getString("p_code"));
@@ -135,7 +135,7 @@ public class OrderDAO {
 				orderVO.setUser_phone(rs.getString("user_phone"));
 				orderVO.setOrder_addr(rs.getString("order_addr"));
 				orderVO.setDeliver_company(rs.getString("deliver_company"));
-				orderVO.setDeliver_num(rs.getInt("deliver_num"));
+				orderVO.setDeliver_num(rs.getString("deliver_num"));
 				orderVO.setDeliver_state(rs.getString("deliver_state"));
 				orderVO.setP_name(rs.getString("p_name"));
 				orderVO.setPic1(rs.getString("pic1"));
@@ -147,5 +147,82 @@ public class OrderDAO {
 			Oracle11.close(conn, pstmt, rs);
 		}
 		return orderVOList;
+	}
+	
+	public ArrayList<OrderVO> OrderListAll(){
+		ArrayList<OrderVO> orderVOList = new ArrayList<OrderVO>();
+		try {
+			conn = Oracle11.getConnection();
+			pstmt = conn.prepareStatement(Oracle11.ORDER_LIST_ALL);
+			rs = pstmt.executeQuery();
+			while (rs.next()){
+				OrderVO orderVO = new OrderVO();
+				orderVO.setOrder_no(rs.getInt("order_no"));
+				orderVO.setUser_id(rs.getString("user_id"));
+				orderVO.setP_code(rs.getString("p_code"));
+				orderVO.setOrder_count(rs.getInt("order_count"));
+				orderVO.setOrder_price(rs.getInt("order_price"));
+				orderVO.setOrder_date(rs.getString("order_date"));
+				orderVO.setUser_phone(rs.getString("user_phone"));
+				orderVO.setOrder_addr(rs.getString("order_addr"));
+				orderVO.setDeliver_company(rs.getString("deliver_company"));
+				orderVO.setDeliver_num(rs.getString("deliver_num"));
+				orderVO.setDeliver_state(rs.getString("deliver_state"));
+				orderVO.setP_name(rs.getString("p_name"));
+				orderVO.setPic1(rs.getString("pic1"));
+				orderVOList.add(orderVO);
+			}
+		} catch (ClassNotFoundException | SQLException e) {
+			e.printStackTrace();
+		} finally {
+			Oracle11.close(conn, pstmt, rs);
+		}
+		return orderVOList;
+	}
+	
+	public OrderVO OrderByNo(int order_no){
+		OrderVO orderVO = new OrderVO();
+		try {
+			conn = Oracle11.getConnection();
+			pstmt = conn.prepareStatement(Oracle11.ORDER_BY_NO);
+			pstmt.setInt(1, order_no);
+			rs = pstmt.executeQuery();
+			while (rs.next()){
+				orderVO.setOrder_no(rs.getInt("order_no"));
+				orderVO.setUser_id(rs.getString("user_id"));
+				orderVO.setP_code(rs.getString("p_code"));
+				orderVO.setOrder_count(rs.getInt("order_count"));
+				orderVO.setOrder_price(rs.getInt("order_price"));
+				orderVO.setOrder_date(rs.getString("order_date"));
+				orderVO.setUser_phone(rs.getString("user_phone"));
+				orderVO.setOrder_addr(rs.getString("order_addr"));
+				orderVO.setDeliver_company(rs.getString("deliver_company"));
+				orderVO.setDeliver_num(rs.getString("deliver_num"));
+				orderVO.setDeliver_state(rs.getString("deliver_state"));
+				orderVO.setP_name(rs.getString("p_name"));
+				orderVO.setPic1(rs.getString("pic1").substring(2));
+			}
+		} catch (ClassNotFoundException | SQLException e) {
+			e.printStackTrace();
+		} finally {
+			Oracle11.close(conn, pstmt, rs);
+		}
+		return orderVO;
+	}
+	
+	public int UpdateOrder(OrderVO orderVO){
+		int i = 0;
+		try {
+			conn = Oracle11.getConnection();
+			pstmt = conn.prepareStatement(Oracle11.UPDATE_ORDER);
+			pstmt.setString(1, orderVO.getDeliver_company());
+			pstmt.setString(2, orderVO.getDeliver_state());
+			pstmt.setString(3, orderVO.getDeliver_num());
+			pstmt.setInt(4, orderVO.getOrder_no());
+			i = pstmt.executeUpdate();
+		} catch (ClassNotFoundException | SQLException e) {
+			e.printStackTrace();
+		}
+		return i;
 	}
 }

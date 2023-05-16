@@ -35,7 +35,7 @@ public class AddPaymentCtrl extends HttpServlet {
 		order.setUser_phone(request.getParameter("user_phone"));
 		order.setOrder_addr(request.getParameter("address1")+" "+request.getParameter("address2")+" ("+request.getParameter("postcode")+")");
 		order.setDeliver_company("");
-		order.setDeliver_num(odao.deliverNumGenerator());
+		order.setDeliver_num("");
 //		order.setDeliver_state("배송 전"); --default
 		
 		Pay pay = new Pay();
@@ -50,9 +50,9 @@ public class AddPaymentCtrl extends HttpServlet {
 		i = odao.addOrder(order, pay, basket_no);
 		System.out.println(i);
 		if(i>=3){
-			response.sendRedirect("/MyOrder.do?uid="+user_id);
+			response.sendRedirect(request.getContextPath()+"/MyOrder.do?uid="+user_id);
 		} else {
-			response.sendRedirect("/AddOrder.do?bno="+basket_no+"&uid="+user_id+"&p_code="+p_code);
+			response.sendRedirect(request.getContextPath()+"/AddOrder.do?bno="+basket_no+"&uid="+user_id+"&p_code="+p_code);
 		}
 		
 	}

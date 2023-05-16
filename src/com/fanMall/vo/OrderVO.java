@@ -10,7 +10,7 @@ public class OrderVO {
 	private String user_phone;
 	private	String	order_addr;
 	private	String	deliver_company;
-	private	int	deliver_num;
+	private	String	deliver_num;
 	private	String	deliver_state;
 	private	String	p_name;
 	private String pic1;
@@ -68,10 +68,10 @@ public class OrderVO {
 	public void setDeliver_company(String deliver_company) {
 		this.deliver_company = deliver_company;
 	}
-	public int getDeliver_num() {
+	public String getDeliver_num() {
 		return deliver_num;
 	}
-	public void setDeliver_num(int deliver_num) {
+	public void setDeliver_num(String deliver_num) {
 		this.deliver_num = deliver_num;
 	}
 	public String getDeliver_state() {

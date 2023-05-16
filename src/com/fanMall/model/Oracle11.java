@@ -57,11 +57,14 @@ public class Oracle11 {
 	final static String DELIVER_NUM_GENERATOR = "SELECT DELIVER_NUM FROM (SELECT DELIVER_NUM FROM PROD_ORDER ORDER BY DELIVER_NUM DESC) WHERE ROWNUM=1";
 	final static String REMOVE_PRODUCT = "UPDATE PRODUCT SET P_AMOUNT=P_AMOUNT-? WHERE P_CODE=?";
 	final static String MY_ORDER = "select a.*, b.p_name, b.pic1 from prod_order a, product b where a.user_id=? and a.p_code = b.p_code";
+	final static String ORDER_LIST_ALL = "select a.*, b.p_name, b.pic1 from prod_order a, product b where a.p_code = b.p_code order by a.order_no desc";
+	final static String ORDER_BY_NO = "select a.*, b.p_name, b.pic1 from prod_order a, product b where a.p_code = b.p_code and order_no=? order by a.order_no desc";
+	final static String UPDATE_ORDER = "UPDATE PROD_ORDER SET DELIVER_COMPANY=?, DELIVER_STATE=?, DELIVER_NUM=? WHERE ORDER_NO=?";
 	
 	//결제
 	final static String PAY_NO_GENERATOR = "SELECT PAY_NO FROM (SELECT PAY_NO FROM PAY ORDER BY PAY_NO DESC) WHERE ROWNUM=1";
 	final static String ADD_PAY = "INSERT INTO PAY VALUES(?, ?, ?, ?, DEFAULT)";
-	
+			
 	
 	static Connection getConnection() throws ClassNotFoundException, SQLException{
 		Class.forName(driver);
