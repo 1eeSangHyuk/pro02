@@ -21,7 +21,11 @@ public class AddPaymentCtrl extends HttpServlet {
 		response.setContentType("text/html; charset=UTF-8"); 
 		String user_id = request.getParameter("user_id");
 		String p_code = request.getParameter("p_code");
-		int basket_no = Integer.parseInt(request.getParameter("basket_no"));
+		int basket_no = 0;
+		if (request.getParameter("basket_no") != null){
+			basket_no = Integer.parseInt(request.getParameter("basket_no"));
+		}
+		
 		
 		OrderDAO odao = new OrderDAO();
 		Prod_order order = new Prod_order();
@@ -48,7 +52,6 @@ public class AddPaymentCtrl extends HttpServlet {
 		
 		int i = 0;
 		i = odao.addOrder(order, pay, basket_no);
-		System.out.println(i);
 		if(i>=3){
 			response.sendRedirect(request.getContextPath()+"/MyOrder.do?uid="+user_id);
 		} else {

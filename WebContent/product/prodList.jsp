@@ -37,15 +37,15 @@
 			<tr>
 	        	<td>
 	        		<a href="InsertBasket.do?p_code=${prod.p_code }&uid=${uid }" class="btn btn-default" role="button">장바구니에 담기</a>
-	        		<a href="InsertOrder.do?p_code=${prod.p_code }" class="btn btn-default" role="button">바로 구매하기</a>
+	        		<a href="${path }/AddOrder.do?uid=${uid }&p_code=${prod.p_code }" class="btn btn-primary">바로 구매하기</a>
 	        	</td>
 			</tr>
 			</c:if>
 	        <c:if test="${uid.equals('admin') }">
 	        <tr>
 	        	<td>
-	        		<a href="UpdateProduct.do?p_code=${prod.p_code }" class="btn btn-default" role="button">헤당 물품 재고관리</a>
-	        		<a href="ReceiptProduct.do?p_code=${prod.p_code }" class="btn btn-default" role="button">헤당 물품에 대한 주문 관리</a>
+	        		<a href="UpdateProduct.do?p_code=${prod.p_code }" class="btn btn-default" role="button">헤당 물품 편집(재고 관리 포함)</a>
+	        		<a href="${path }/OrderListByPcode.do?p_code=${prod.p_code }" class="btn btn-default" role="button">헤당 물품에 대한 주문 관리</a>
 	        		<a href="DeleteProduct.do?p_code=${prod.p_code }" class="btn btn-default" role="button">헤당 물품 삭제</a>
 	        		<a href="ReviewProduct.do?p_code=${prod.p_code }" class="btn btn-default" role="button">헤당 물품에 대한 리뷰 관리</a>
 	        	</td>
@@ -60,6 +60,12 @@
 	        	</td>
 			</tr>
 		</tbody>
+	</table>
+</div>
+<div>
+	<h2>${catMap.get('catname') } 제품 후기</h2>
+	<table class="table">
+		
 	</table>
 </div>
 <%@ include file="../../footer.jsp" %>

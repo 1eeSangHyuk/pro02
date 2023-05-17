@@ -12,6 +12,9 @@ select * from prod_order;
 select a.*, b.p_name, b.pic1 from prod_order a, product b where a.p_code = b.p_code and order_no=1 order by a.order_no desc;
 
 select a.*, b.p_name, b.pic1 from prod_order a, product b where a.p_code = b.p_code order by a.order_no desc;
+
+
+
 commit;
 
 

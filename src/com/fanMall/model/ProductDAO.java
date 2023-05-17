@@ -224,6 +224,28 @@ public class ProductDAO {
 		return i;
 	}
 	
+	public int updateProduct(Product prod){
+		int i = 0;
+		try {
+			conn = Oracle11.getConnection();
+			pstmt = conn.prepareStatement(Oracle11.PROD_UPDATE);
+			pstmt.setString(1, prod.getP_name());
+			pstmt.setInt(2, prod.getP_price());
+			pstmt.setString(3, prod.getP_about());
+			pstmt.setInt(4, prod.getP_amount());
+			pstmt.setString(5, prod.getPic1());
+			pstmt.setString(6, prod.getPic2());
+			pstmt.setString(7, prod.getPic3());
+			pstmt.setString(8, prod.getP_code());
+			i = pstmt.executeUpdate();
+		} catch (ClassNotFoundException | SQLException e) {
+			e.printStackTrace();
+		} finally {
+			Oracle11.close(conn, pstmt);
+		}
+		return i;
+	}
+	
 	public String getP_codeGenerator(String cat1){
 		String p_codeMax = "0";
 		try {

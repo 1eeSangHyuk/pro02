@@ -97,14 +97,20 @@
 			<c:if test="${uid.equals('admin') }">
 				<li><a>관리자님, 안녕하세요!</a></li>
 				<li class="dropdown">
-			        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">관리자페이지(전체 제품 관리 페이지) <span class="caret"></span></a>
+			        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">상품/판매 관리 페이지<span class="caret"></span></a>
 			        <ul class="dropdown-menu" role="menu">
-						<li><a href="${header_path }/UpdateProduct.do">전체 물품 재고관리 view</a></li>
-						<li><a href="${header_path }/OrderListAll.do">주문 관리 ~</a></li>
+						<li><a href="${header_path }/ProductListAll.do">전체 제품 관리 페이지(제품업데이트  O, 주문관리 O, 삭제 O, 리뷰)</a></li>
 						<li><a href="${header_path }/InsertCategory.do">새로운 카테고리 등록</a></li>
 						<li><a href="${header_path }/InsertProduct.do">새로운 물품 등록 O</a></li>
-						<li><a href="${header_path }/ProductListAll.do">물품 삭제 O</a></li>
-						<li><a href="${header_path }/ReviewProduct.do">리뷰 관리</a></li>
+						<li class="divider"></li>
+						<li><a href="${header_path }/OrderListAll.do">전체 주문 관리 O</a></li>
+					</ul>
+				</li>
+				<li class="dropdown">
+			        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">글 관리 페이지<span class="caret"></span></a>
+			        <ul class="dropdown-menu" role="menu">
+						<li><a href="${header_path }/ReviewProduct.do">전체 리뷰 관리</a></li>
+						<li><a href="${header_path }/NoticeList.do">공지사항 관리</a></li>
 						<li class="divider"></li>
 					</ul>
 				</li>

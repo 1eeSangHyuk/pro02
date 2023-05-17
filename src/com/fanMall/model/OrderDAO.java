@@ -180,6 +180,38 @@ public class OrderDAO {
 		return orderVOList;
 	}
 	
+	public ArrayList<OrderVO> OrderListByPcode(String p_code){
+		ArrayList<OrderVO> orderVOList = new ArrayList<OrderVO>();
+		try {
+			conn = Oracle11.getConnection();
+			pstmt = conn.prepareStatement(Oracle11.ORDER_LIST_BY_PCODE);
+			pstmt.setString(1, p_code);
+			rs = pstmt.executeQuery();
+			while (rs.next()){
+				OrderVO orderVO = new OrderVO();
+				orderVO.setOrder_no(rs.getInt("order_no"));
+				orderVO.setUser_id(rs.getString("user_id"));
+				orderVO.setP_code(rs.getString("p_code"));
+				orderVO.setOrder_count(rs.getInt("order_count"));
+				orderVO.setOrder_price(rs.getInt("order_price"));
+				orderVO.setOrder_date(rs.getString("order_date"));
+				orderVO.setUser_phone(rs.getString("user_phone"));
+				orderVO.setOrder_addr(rs.getString("order_addr"));
+				orderVO.setDeliver_company(rs.getString("deliver_company"));
+				orderVO.setDeliver_num(rs.getString("deliver_num"));
+				orderVO.setDeliver_state(rs.getString("deliver_state"));
+				orderVO.setP_name(rs.getString("p_name"));
+				orderVO.setPic1(rs.getString("pic1"));
+				orderVOList.add(orderVO);
+			}
+		} catch (ClassNotFoundException | SQLException e) {
+			e.printStackTrace();
+		} finally {
+			Oracle11.close(conn, pstmt, rs);
+		}
+		return orderVOList;
+	}
+	
 	public OrderVO OrderByNo(int order_no){
 		OrderVO orderVO = new OrderVO();
 		try {
@@ -222,6 +254,8 @@ public class OrderDAO {
 			i = pstmt.executeUpdate();
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
+		} finally {
+			Oracle11.close(conn, pstmt);
 		}
 		return i;
 	}

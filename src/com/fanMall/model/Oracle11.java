@@ -37,6 +37,7 @@ public class Oracle11 {
 	final static String CAT_SELECT = "SELECT * FROM CATEGORY WHERE CATNO=?";
 	final static String PROD_DELETE = "DELETE FROM PRODUCT WHERE P_CODE=?";
 	final static String PROD_INSERT = "INSERT INTO PRODUCT VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)";
+	final static String PROD_UPDATE = "UPDATE PRODUCT SET P_NAME=?, P_PRICE=?, P_ABOUT=?, P_AMOUNT=?, PIC1=?, PIC2=?, PIC3=? WHERE P_CODE=?";
 	final static String CAT_SELECT_CAT1 = "SELECT SUBSTR(CATNO, 0, 2) AS CAT1, CATGROUP FROM CATEGORY WHERE CATNO LIKE '%01'";
 	final static String CAT_SELECT_CAT2 = "SELECT CATNO, SUBSTR(CATNO, 0, 2) AS CAT1, SUBSTR(CATNO, 3, 4) AS CAT2, CATGROUP, CATNAME FROM CATEGORY WHERE CATNO LIKE ?||'%'";
 	final static String GET_P_CODE_MAX_INCAT = "select p_code from (select * from product where catno like ?||'%' order by p_code desc) where rownum=1";
@@ -58,13 +59,17 @@ public class Oracle11 {
 	final static String REMOVE_PRODUCT = "UPDATE PRODUCT SET P_AMOUNT=P_AMOUNT-? WHERE P_CODE=?";
 	final static String MY_ORDER = "select a.*, b.p_name, b.pic1 from prod_order a, product b where a.user_id=? and a.p_code = b.p_code";
 	final static String ORDER_LIST_ALL = "select a.*, b.p_name, b.pic1 from prod_order a, product b where a.p_code = b.p_code order by a.order_no desc";
+	final static String ORDER_LIST_BY_PCODE = "select a.*, b.p_name, b.pic1 from prod_order a, product b where a.p_code=? and a.p_code = b.p_code order by a.order_no desc";
 	final static String ORDER_BY_NO = "select a.*, b.p_name, b.pic1 from prod_order a, product b where a.p_code = b.p_code and order_no=? order by a.order_no desc";
 	final static String UPDATE_ORDER = "UPDATE PROD_ORDER SET DELIVER_COMPANY=?, DELIVER_STATE=?, DELIVER_NUM=? WHERE ORDER_NO=?";
 	
 	//결제
 	final static String PAY_NO_GENERATOR = "SELECT PAY_NO FROM (SELECT PAY_NO FROM PAY ORDER BY PAY_NO DESC) WHERE ROWNUM=1";
 	final static String ADD_PAY = "INSERT INTO PAY VALUES(?, ?, ?, ?, DEFAULT)";
-			
+	
+	//리뷰
+	final static String GET_REVIEW_VO_BY_UID = "select a.*, b.order_date, c.p_name, c.catno, c.pic1 from review a, prod_order b, product c where a.order_no = b.order_no and b.p_code = c.p_code and a.order_no = ?";
+	final static String GET_REVIEW_VO = "select a.*, b.order_date, c.p_name, c.catno, c.pic1 from review a, prod_order b, product c where a.order_no = b.order_no and b.p_code = c.p_code";
 	
 	static Connection getConnection() throws ClassNotFoundException, SQLException{
 		Class.forName(driver);

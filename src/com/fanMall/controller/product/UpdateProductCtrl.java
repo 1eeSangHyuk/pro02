@@ -12,10 +12,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.fanMall.dto.Product;
 import com.fanMall.model.ProductDAO;
-import com.fanMall.model.ReviewDAO;
 
-@WebServlet("/ProductList.do")
-public class GetProductList extends HttpServlet {
+@WebServlet("/UpdateProduct.do")
+public class UpdateProductCtrl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -31,11 +30,7 @@ public class GetProductList extends HttpServlet {
 		request.setAttribute("prod", prod);
 		request.setAttribute("catMap", catMap);
 		
-		String user_id = request.getParameter("uid");
-		ReviewDAO rdao = new ReviewDAO();
-		
-		
-		RequestDispatcher view = request.getRequestDispatcher("/product/prodList.jsp");
+		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/admin/updateProduct.jsp");
 		view.forward(request, response);
 	}
 }

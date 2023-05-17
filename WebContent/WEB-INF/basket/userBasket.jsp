@@ -54,7 +54,6 @@
 		</tbody>
 	</table>
 	<div class="btn-group">
-		<a href="${path }/" class="btn btn-primary">전체 상품 구매하러 가기</a>&nbsp;&nbsp;&nbsp;&nbsp;
 		<a href="javascript:history.go(-1)" class="btn btn-primary">뒤로 가기</a>
 	</div>
 </div>

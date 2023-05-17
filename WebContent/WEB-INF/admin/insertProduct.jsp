@@ -23,7 +23,7 @@
 <div>
 	<h2>제품 등록하기</h2>
 	<p>${msg }</p>
-	<form action="${path }/InsertProductPro.do" method="post" enctype="multipart/form-data">
+	<form action="${path }/InsertProductPro.do" method="post" enctype="multipart/form-data" onsubmit="onSubmit();">
 		<table class="table">
 			<tbody>
 				<tr>
@@ -99,11 +99,14 @@
 		</table>
 	</form>
 	<script>
-		function p_codeGen(){
+		function onSubmit(){
 			if($("#p_code").value==""){
-				alert("제품코드를 입력해주세요");
+				alert("제품코드를 발급해주세요");
 				$("#p_code").focus();
-			} else if ($("#cat1").value != "" && $("#catno").value != "") {
+			}
+		}
+		function p_codeGen(){
+			if ($("#cat1").value != "" && $("#catno").value != "") {
 				var params = { catno:$("#catno").val() }
 				$.ajax({
 					url:"${path }/GetP_code.do",
@@ -114,14 +117,14 @@
 					success:function(result){
 						var getPcode = result.result;
 						alert("제품 코드 : "+getPcode);
-						$("#p_code").value(getPcode);
+						$("#p_code").val(getPcode);
 					}
 				})
 			} else {
 				alert("카테고리를 지정해 주세요.");
 				$("#cat1").focus();
 			}
-		}	
+		}
 		$(document).ready(function(){
 			$("#cat1").change(function(){
 				if($("#cat1").val()==""){

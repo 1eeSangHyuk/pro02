@@ -43,12 +43,19 @@
 						<input type="hidden" id="p_name" name="p_name" value="${prod.p_name }">
 						<input type="hidden" id="p_amount" name="p_amount" value="${prod.p_amount }">
 						<input type="hidden" id="catno" name="catno" value="${prod.catno }">
+						<c:if test="${!empty basket }">
 						<input type="hidden" id="basket_no" name="basket_no" value="${basket.basket_no }">
 						<input type="hidden" id="basket_count" name="basket_count" value="${basket.basket_count }">
+						</c:if>
 					</td>
 					<td>${prod.p_name }</td>
 					<td>
+						<c:if test="${!empty basket }">
 						<input type="number" id="count" name="count" min="0" max="${prod.p_amount }" value="${basket.basket_count }">
+						</c:if>
+						<c:if test="${empty basket }">
+						<input type="number" id="count" name="count" min="0" max="${prod.p_amount }" value="1">
+						</c:if>
 					</td>
 					<td>${prod.p_amount }</td>
 					<td>
@@ -65,15 +72,15 @@
 				<tr>
 					<th>배송주소</th>
 					<td>
-						<input type="text" id="address1" name="address1" placeholder="기본주소">
-						<input type="text" id="address2" name="address2" placeholder="상세주소">
-						<input type="text" id="postcode" name="postcode" placeholder="우편번호">
+						<input type="text" id="address1" name="address1" placeholder="기본주소" required="required">
+						<input type="text" id="address2" name="address2" placeholder="상세주소" required="required">
+						<input type="text" id="postcode" name="postcode" placeholder="우편번호" required="required">
 						<button type="button" onclick="findAddr()" class="btn btn-primary">우편번호 검색</button>
 					</td>
 				</tr>
 				<tr>
 					<th>전화번호</th>
-					<td><input type="number" id="user_phone" name="user_phone" value="${user.user_phone }"></td>
+					<td><input type="number" id="user_phone" name="user_phone" value="${user.user_phone }" required="required"></td>
 				</tr>
 			</tbody>
 		</table>
