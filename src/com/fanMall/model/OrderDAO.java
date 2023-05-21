@@ -84,8 +84,8 @@ public class OrderDAO {
 			pstmt.setInt(5, order.getOrder_price());
 			pstmt.setString(6, order.getUser_phone());
 			pstmt.setString(7, order.getOrder_addr());
-			pstmt.setString(8, order.getDeliver_company());
-			pstmt.setString(9, order.getDeliver_num());
+			pstmt.setString(8, "");
+			pstmt.setString(9, "");
 			i += pstmt.executeUpdate();
 			
 			pstmt = conn.prepareStatement(Oracle11.ADD_PAY);
@@ -258,5 +258,18 @@ public class OrderDAO {
 			Oracle11.close(conn, pstmt);
 		}
 		return i;
+	}
+	
+	public void UpdateDeliverStatefin(int order_no){
+		try {
+			conn = Oracle11.getConnection();
+			pstmt = conn.prepareStatement(Oracle11.UPDATE_DELIVER_STATE_FIN);
+			pstmt.setInt(1, order_no);
+			pstmt.executeUpdate();
+		} catch (ClassNotFoundException | SQLException e) {
+			e.printStackTrace();
+		} finally {
+			Oracle11.close(conn, pstmt);
+		}
 	}
 }

@@ -62,14 +62,20 @@ public class Oracle11 {
 	final static String ORDER_LIST_BY_PCODE = "select a.*, b.p_name, b.pic1 from prod_order a, product b where a.p_code=? and a.p_code = b.p_code order by a.order_no desc";
 	final static String ORDER_BY_NO = "select a.*, b.p_name, b.pic1 from prod_order a, product b where a.p_code = b.p_code and order_no=? order by a.order_no desc";
 	final static String UPDATE_ORDER = "UPDATE PROD_ORDER SET DELIVER_COMPANY=?, DELIVER_STATE=?, DELIVER_NUM=? WHERE ORDER_NO=?";
+	final static String UPDATE_DELIVER_STATE_FIN = "UPDATE PROD_ORDER SET DELIVER_STATE='구매 확정' WHERE ORDER_NO=?";
 	
 	//결제
 	final static String PAY_NO_GENERATOR = "SELECT PAY_NO FROM (SELECT PAY_NO FROM PAY ORDER BY PAY_NO DESC) WHERE ROWNUM=1";
 	final static String ADD_PAY = "INSERT INTO PAY VALUES(?, ?, ?, ?, DEFAULT)";
 	
 	//리뷰
-	final static String GET_REVIEW_VO_BY_UID = "select a.*, b.order_date, c.p_name, c.catno, c.pic1 from review a, prod_order b, product c where a.order_no = b.order_no and b.p_code = c.p_code and a.order_no = ?";
-	final static String GET_REVIEW_VO = "select a.*, b.order_date, c.p_name, c.catno, c.pic1 from review a, prod_order b, product c where a.order_no = b.order_no and b.p_code = c.p_code";
+	final static String GET_REVIEW_VO_BY_UID = "select a.*, b.order_date, c.p_name from review a, prod_order b, product c where a.order_no = b.order_no and b.p_code = c.p_code and a.order_no = ?";
+	final static String GET_REVIEW_VO = "select a.*, b.order_date, c.p_name from review a, prod_order b, product c where a.order_no = b.order_no and b.p_code = c.p_code";
+	final static String GET_REVIEW_VO_BY_P_CODE = "select a.*, b.order_date, c.p_name from review a, prod_order b, product c where a.order_no = b.order_no and b.p_code = ? and b.p_code = c.p_code order by review_date desc";
+	final static String INSERT_REVIEW = "INSERT INTO REVIEW VALUES(REVIEW_NO_SEQ.NEXTVAL, ?, ?, DEFAULT, ?, ?, ?)";
+	final static String GET_REVIEW_BY_ORDER_NO = "SELECT * FROM REVIEW WHERE ORDER_NO=?";
+	final static String GET_REVIEW_BY_REVIEW_NO = "SELECT * FROM REVIEW WHERE REVIEW_NO=?";
+	final static String UPDATE_REVIEW = "UPDATE REVIEW SET REVIEW_TITLE=?, REVIEW_TEXT=?, REVIEW_STAR=? WHERE REVIEW_NO=?";
 	
 	static Connection getConnection() throws ClassNotFoundException, SQLException{
 		Class.forName(driver);

@@ -48,14 +48,22 @@
 				<td>${order.order_date }</td>
 				<td>${order.order_addr }</td>
 				<td>${order.deliver_state }
-					<c:if test="${order.deliver_state eq '배송 전'}">
+					<c:if test="${order.deliver_state eq '배송 전' }">
 					<br>
 					<a href="${path }/CancelPay.do?order_no=${order.order_no }" class="btn btn-primary">주문 취소하기</a>
 					</c:if>
-					<c:if test="${order.deliver_state != '배송 전'}">
+					<c:if test="${order.deliver_state != '배송 전' && order.deliver_state != '구매 확정' }">
 					<br>
-					<a href="${path }/ReturnBuy.do?order_no=${order.order_no }">반품 요청</a>
-					<a href="${path }/OkBuy.do?order_no=${order.order_no }">구매 확정하기</a>
+					<a href="${path }/ReturnBuy.do?order_no=${order.order_no }" class="btn btn-primary">반품 요청</a>
+					<a href="${path }/OkBuy.do?order_no=${order.order_no }&uid=${uid }" class="btn btn-primary">구매 확정하기</a>
+					</c:if>
+					<c:if test="${order.deliver_state eq '구매 확정' && order.order_no != review.order_no }">
+					<br>
+					<a href="${path }/InsertReview.do?order_no=${order.order_no }" class="btn btn-primary">리뷰 작성하기</a>
+					</c:if>
+					<c:if test="${order.deliver_state eq '구매 확정' && order.order_no == review.order_no }">
+					<br>
+					<a href="${path }/UpdateReview.do?review_no=${list.review_no }" class="btn btn-primary">리뷰 수정하기</a>
 					</c:if>
 				</td>
 				<td>${order.deliver_company }</td>

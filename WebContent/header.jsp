@@ -31,7 +31,7 @@
 	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 	      <ul class="nav navbar-nav">
 	        <li class="dropdown">
-	          <a href="${header_path }/ProductListAll.do?catno=01" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">fan <span class="caret"></span></a>
+	          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">fan <span class="caret"></span></a>
 	          <ul class="dropdown-menu" role="menu">
 	            <li><a href="${header_path }/ProductCatList.do?catno=0101">써큘레이터</a></li>
 	            <li><a href="${header_path }/ProductCatList.do?catno=0102">데스크팬</a></li>
@@ -39,7 +39,7 @@
 	          </ul>
 	        </li>
 	        <li class="dropdown">
-	          <a href="${header_path }/ProductListAll.do?catno=02" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">light <span class="caret"></span></a>
+	          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">light <span class="caret"></span></a>
 	          <ul class="dropdown-menu" role="menu">
 	            <li><a href="${header_path }/ProductCatList.do?catno=0201">테이블 램프</a></li>
 	            <li><a href="${header_path }/ProductCatList.do?catno=0202">멀티 랜턴</a></li>
@@ -47,7 +47,7 @@
 	          </ul>
 	        </li>
 	        <li class="dropdown">
-	          <a href="${header_path }/ProductListAll.do?catno=03" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">air <span class="caret"></span></a>
+	          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">air <span class="caret"></span></a>
 	          <ul class="dropdown-menu" role="menu">
 	            <li><a href="${header_path }/ProductCatList.do?catno=0301">공기청정기</a></li>
 	            <li><a href="${header_path }/ProductCatList.do?catno=0302">온풍기</a></li>
@@ -55,7 +55,7 @@
 	          </ul>
 	        </li>
 	        <li class="dropdown">
-	          <a href="${header_path }/ProductListAll.do?catno=04" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">life <span class="caret"></span></a>
+	          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">life <span class="caret"></span></a>
 	          <ul class="dropdown-menu" role="menu">
 	            <li><a href="${header_path }/ProductCatList.do?catno=0401">휴대용 배터리</a></li>
 	            <li><a href="${header_path }/ProductCatList.do?catno=0402">무선 충전기</a></li>

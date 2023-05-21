@@ -10,7 +10,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.fanMall.dto.Review;
 import com.fanMall.model.OrderDAO;
+import com.fanMall.model.ReviewDAO;
 import com.fanMall.vo.OrderVO;
 
 @WebServlet("/MyOrder.do")
@@ -25,6 +27,14 @@ public class MyOrderCtrl extends HttpServlet {
 		orderVOList = odao.myOrder(user_id);
 		request.setAttribute("orderVOList", orderVOList);
 		
+		ReviewDAO rdao = new ReviewDAO();
+		for (OrderVO o : orderVOList){
+			Review review = rdao.getReviewByOrderNo(o.getOrder_no());
+			if(review.getOrder_no()==o.getOrder_no()){
+				request.setAttribute("review", review);
+			}
+		}
+			
 		RequestDispatcher view = request.getRequestDispatcher("/order/myOrder.jsp");
 		view.forward(request, response);
 	}

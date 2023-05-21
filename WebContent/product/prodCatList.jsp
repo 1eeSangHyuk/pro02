@@ -22,11 +22,11 @@
 	<div class="row">
 	  <div class="col-sm-6 col-md-4">
 	    <div class="thumbnail">
-	      <a href="ProductList.do?p_code=${prod.p_code }&uid=${uid }">	
+	      <a href="ProductList.do?p_code=${prod.p_code }">	
 	      	<img src="${path }/product/${prod.pic1 }" alt="${prod.p_name }">
 	      </a>
 	      <div class="caption">
-	        <p><a href="ProductList.do?p_code=${prod.p_code }&uid=${uid }">${prod.p_name }</a></p>
+	        <p><a href="ProductList.do?p_code=${prod.p_code }">${prod.p_name }</a></p>
 	        <h3><fmt:formatNumber value="${prod.p_price }" type="currency" ></fmt:formatNumber></h3>
 	        <c:if test="${!empty uid } && ${!uid.equals('admin') }">
 	        <p>

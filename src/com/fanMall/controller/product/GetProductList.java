@@ -1,6 +1,7 @@
 package com.fanMall.controller.product;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import javax.servlet.RequestDispatcher;
@@ -13,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.fanMall.dto.Product;
 import com.fanMall.model.ProductDAO;
 import com.fanMall.model.ReviewDAO;
+import com.fanMall.vo.ReviewVO;
 
 @WebServlet("/ProductList.do")
 public class GetProductList extends HttpServlet {
@@ -31,9 +33,10 @@ public class GetProductList extends HttpServlet {
 		request.setAttribute("prod", prod);
 		request.setAttribute("catMap", catMap);
 		
-		String user_id = request.getParameter("uid");
 		ReviewDAO rdao = new ReviewDAO();
-		
+		ArrayList<ReviewVO> reviewVOList = new ArrayList<ReviewVO>(); 
+		reviewVOList = rdao.getReviewVOByPcode(p_code);
+		request.setAttribute("reviewVOList", reviewVOList);
 		
 		RequestDispatcher view = request.getRequestDispatcher("/product/prodList.jsp");
 		view.forward(request, response);

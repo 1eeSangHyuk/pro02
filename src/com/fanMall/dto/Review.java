@@ -5,6 +5,7 @@ public class Review {
 	private	String	user_id;
 	private	int	order_no;
 	private	String	review_date;
+	private String review_title;
 	private	String	review_text;
 	private	int	review_star;
 	
@@ -31,6 +32,12 @@ public class Review {
 	}
 	public void setReview_date(String review_date) {
 		this.review_date = review_date;
+	}
+	public String getReview_title() {
+		return review_title;
+	}
+	public void setReview_title(String review_title) {
+		this.review_title = review_title;
 	}
 	public String getReview_text() {
 		return review_text;

@@ -91,6 +91,7 @@
 							<option value="배송 전">배송 전</option>
 							<option value="배송 중">배송 중</option>
 							<option value="배송완료">배송완료</option>
+							<option value="구매 확정">구매 확정</option>
 						</select>
 					</td>
 				</tr>
@@ -99,7 +100,7 @@
 		<div>
 			<input type="submit" value="배송 처리 변경" class="btn btn-primary">
 			<c:if test="${! list.deliver_state.equals('구매완료') }">
-			<a href="${path }/CancelOrder.do?order_no=${order_no }" class="btn btn-primary">주문취소</a>
+			<a href="${path }/CancelOrder.do?order_no=${list.order_no }" class="btn btn-primary">주문취소</a>
 			</c:if>
 			<a href="javascript:history.go(-1)" class="btn btn-primary">뒤로가기</a>
 		</div>

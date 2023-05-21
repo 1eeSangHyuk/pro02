@@ -9,8 +9,7 @@ public class ReviewVO {
 	private	int	review_star;
 	private	String	order_date;
 	private	String	p_name;
-	private String catno;
-	private String pic1;
+
 	public int getReview_no() {
 		return review_no;
 	}
@@ -59,18 +58,5 @@ public class ReviewVO {
 	public void setP_name(String p_name) {
 		this.p_name = p_name;
 	}
-	public String getCatno() {
-		return catno;
-	}
-	public void setCatno(String catno) {
-		this.catno = catno;
-	}
-	public String getPic1() {
-		return pic1;
-	}
-	public void setPic1(String pic1) {
-		this.pic1 = pic1;
-	}
-	
 	
 }

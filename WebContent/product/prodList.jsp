@@ -65,7 +65,31 @@
 <div>
 	<h2>${catMap.get('catname') } 제품 후기</h2>
 	<table class="table">
-		
+		<thead>
+			<tr>
+				<th>연번</th>
+				<th>별점</th>
+				<th>후기</th>
+				<th>날짜</th>
+			</tr>
+		</thead>
+		<tbody>
+			<c:forEach var="list" items="${reviewVOList }" varStatus="status">
+				<c:if test="${!empty list }">
+				<tr>
+					<th>${status.count }</th>
+					<th>${list.review_star }</th>
+					<th>${list.review_text }</th>
+					<th>${list.review_date }</th>
+				</tr>
+				</c:if>
+				<c:if test="${empty list }">
+				<tr>
+					<th colspan="4">후기가 없습니다.</th>
+				</tr>
+				</c:if>
+			</c:forEach>
+		</tbody>
 	</table>
 </div>
 <%@ include file="../../footer.jsp" %>
