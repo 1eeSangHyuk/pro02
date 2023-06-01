@@ -8,13 +8,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<%@ include file="../../common.jsp" %>
+<%@ include file="../common.jsp" %>
 <title>전체제품목록</title>
 <style>
 </style>
 </head>
 <body>
-<%@ include file="../../header.jsp" %>
+<%@ include file="../header.jsp" %>
 <div>
 	<h2>전체제품목록</h2>
 	<fmt:setLocale value="ko-KR"/>
@@ -38,6 +38,6 @@
 		<h3>제품 목록이 비어있습니다.</h3>
 	</c:if>
 </div>
-<%@ include file="../../footer.jsp" %>
+<%@ include file="../footer.jsp" %>
 </body>
 </html>
