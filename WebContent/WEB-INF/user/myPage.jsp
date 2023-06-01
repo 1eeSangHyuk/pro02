@@ -18,6 +18,8 @@
 </style>
 </head>
 <body>
+<!-- jquery -->
+<script src="https://code.jquery.com/jquery-3.6.4.js"></script>
 <%@ include file="../../header.jsp" %>
 <h2>회원정보</h2>
 <table class="table">

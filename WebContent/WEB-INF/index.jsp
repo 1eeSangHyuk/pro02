@@ -2,7 +2,6 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="path" value="${pageContext.request.contextPath }" />
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,6 +12,8 @@
 </style>
 </head>
 <body>
+<!-- jquery -->
+<script src="https://code.jquery.com/jquery-3.6.4.js"></script>
 <%@ include file="../header.jsp" %>
 <%@ include file="../footer.jsp" %>
 </body>

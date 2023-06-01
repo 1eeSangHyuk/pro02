@@ -14,6 +14,8 @@
 </style>
 </head>
 <body>
+<!-- jquery -->
+<script src="https://code.jquery.com/jquery-3.6.4.js"></script>
 <%@ include file="../../header.jsp" %>
 <div>
 	<h2>전체제품목록</h2>
