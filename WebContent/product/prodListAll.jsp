@@ -15,6 +15,8 @@
 </head>
 <body>
 <%@ include file="../header.jsp" %>
+<!-- jquery -->
+<script src="https://code.jquery.com/jquery-3.6.4.js"></script>
 <div>
 	<h2>전체제품목록</h2>
 	<fmt:setLocale value="ko-KR"/>

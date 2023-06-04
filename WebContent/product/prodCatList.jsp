@@ -14,6 +14,8 @@
 </style>
 </head>
 <body>
+<!-- jquery -->
+<script src="https://code.jquery.com/jquery-3.6.4.js"></script>
 <%@ include file="../../header.jsp" %>
 <div>
 	<h2>제품목록 > ${catMap.get("catname") }</h2>
@@ -45,6 +47,9 @@
 	<c:if test="${empty prodCatList }">
 		<h3>제품 목록이 비어있습니다.</h3>
 	</c:if>
+	<div>
+		<a href="${path }" class="btn btn-default">홈으로</a>
+	</div>
 </div>
 <%@ include file="../../footer.jsp" %>
 </body>
