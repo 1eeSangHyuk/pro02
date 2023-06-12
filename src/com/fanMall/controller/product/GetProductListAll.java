@@ -22,7 +22,6 @@ public class GetProductListAll extends HttpServlet {
 		response.setContentType("text/html; charset=utf-8");
 		
 		ProductDAO pdao = new ProductDAO();
-		
 		ArrayList<Product> prodListAll = pdao.prodListAll();
 		request.setAttribute("prodListAll", prodListAll);
 				

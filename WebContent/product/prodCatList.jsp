@@ -20,8 +20,8 @@
 <div>
 	<h2>제품목록 > ${catMap.get("catname") }</h2>
 	<fmt:setLocale value="ko-KR"/>
-	<c:forEach var="prod" items="${prodCatList }">
 	<div class="row">
+	<c:forEach var="prod" items="${prodCatList }">
 	  <div class="col-sm-6 col-md-4">
 	    <div class="thumbnail">
 	      <a href="ProductList.do?p_code=${prod.p_code }">	
@@ -42,8 +42,8 @@
 	      </div>
 	    </div>
 	  </div>
-	</div>
 	</c:forEach>
+	</div>
 	<c:if test="${empty prodCatList }">
 		<h3>제품 목록이 비어있습니다.</h3>
 	</c:if>

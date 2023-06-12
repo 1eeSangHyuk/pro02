@@ -31,3 +31,5 @@
 <!-- css 초기화 -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" rel="stylesheet">
 
+<!-- jquery -->
+<script src="https://code.jquery.com/jquery-3.6.4.js"></script>
