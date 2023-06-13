@@ -12,15 +12,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<%@ include file="../../common.jsp" %>
+<jsp:include page="../../common.jsp" />
 <title>공지사항</title>
 <style>
 </style>
 </head>
 <body>
-<!-- jquery -->
-<script src="https://code.jquery.com/jquery-3.6.4.js"></script>
-<%@ include file="../../header.jsp" %>
+<jsp:include page="../../header.jsp" />
 <div>
 	<h2>로그인</h2>
 	<p>${msg }</p>
@@ -45,6 +43,6 @@
 		</table>
 	</form>
 </div>
-<%@ include file="../../footer.jsp" %>
+<jsp:include page="../../footer.jsp" />
 </body>
 </html>

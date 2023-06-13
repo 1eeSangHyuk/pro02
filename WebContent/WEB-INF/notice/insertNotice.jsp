@@ -9,16 +9,14 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<%@ include file="../../common.jsp" %>
+<jsp:include page="../../common.jsp" />
 <title>공지사항</title>
 <style>
 </style>
 </head>
 <body>
-<!-- jquery -->
-<script src="https://code.jquery.com/jquery-3.6.4.js"></script>
-<%@ include file="../../header.jsp" %>
-<div>
+<jsp:include page="../../header.jsp" />
+<div class="container">
 	<h2>공지사항 작성하기</h2>
 	<p>${msg }</p>
 	<form action="${path }/InsertNoticePro.do" method="post" enctype="multipart/form-data">
@@ -55,6 +53,6 @@
 		</table>
 	</form>
 </div>
-<%@ include file="../../footer.jsp" %>
+<jsp:include page="../../footer.jsp" />
 </body>
 </html>

@@ -8,16 +8,14 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<%@ include file="../../common.jsp" %>
+<jsp:include page="../common.jsp" />
 <title>제품목록</title>
 <style>
 </style>
 </head>
 <body>
-<!-- jquery -->
-<script src="https://code.jquery.com/jquery-3.6.4.js"></script>
-<%@ include file="../../header.jsp" %>
-<div>
+<jsp:include page="../header.jsp" />
+<div class="container">
 	<h2>제품목록 > ${catMap.get("catname") }</h2>
 	<fmt:setLocale value="ko-KR"/>
 	<div class="row">
@@ -51,6 +49,6 @@
 		<a href="${path }" class="btn btn-default">홈으로</a>
 	</div>
 </div>
-<%@ include file="../../footer.jsp" %>
+<jsp:include page="../footer.jsp" />
 </body>
 </html>

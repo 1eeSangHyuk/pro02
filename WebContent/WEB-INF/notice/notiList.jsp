@@ -8,16 +8,14 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<%@ include file="../../common.jsp" %>
+<jsp:include page="../../common.jsp" />
 <title>공지사항</title>
 <style>
 </style>
 </head>
 <body>
-<!-- jquery -->
-<script src="https://code.jquery.com/jquery-3.6.4.js"></script>
-<%@ include file="../../header.jsp" %>
-<div>
+<jsp:include page="../../header.jsp" />
+<div class="container">
 	<h2>공지사항</h2>
 	<table class="table">
 		<thead>
@@ -51,6 +49,6 @@
 		<a href="javascript:history.go(-1)" class="btn btn-primary">뒤로가기</a>
 	</div>
 </div>
-<%@ include file="../../footer.jsp" %>
+<jsp:include page="../../footer.jsp" />
 </body>
 </html>
